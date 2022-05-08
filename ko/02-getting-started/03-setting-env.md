@@ -12,7 +12,7 @@ sidebar_position: '3'
 - [https://faucet.cliffnet.cosmwasm.com/status](https://faucet.cliffnet.cosmwasm.com/status)
 - [https://lcd.cliffnet.cosmwasm.com/node_info](https://lcd.cliffnet.cosmwasm.com/node_info)
 
-우리는 두가지의 네이티브 토큰을 설정했습니다. - 검증자가 되기 위한 토큰 `ROCK` (`urock`)과 수수료 지불을 위한 토큰 `PEBBLE` (`upebble`). 사용 가능한 프런트 엔드는 다음과 같습니다:
+우리는 두 가지의 네이티브 토큰을 설정했습니다. - 검증자가 되기 위한 토큰 `ROCK` (`urock`)과 수수료 지불을 위한 토큰 `PEBBLE` (`upebble`). 사용 가능한 프론트엔드는 다음과 같습니다:
 
 - Big Dipper Block Explorer: [https://block-explorer.cliffnet.cosmwasm.com](https://block-explorer.cliffnet.cosmwasm.com)
 
