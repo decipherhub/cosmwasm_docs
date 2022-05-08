@@ -74,7 +74,7 @@ export TXFLAG=($NODE --chain-id $CHAIN_ID --gas-prices 0.025upebble --gas auto -
 wasmd query bank total $NODE
 ```
 
-표준 CLI 도구 외에도 Node.js와 최신 브라우저를 지원하는 유연한 TypeScript 라이브러리인 [CosmJS](https://github.com/CosmWasm/cosmjs) 도 제공합니다. 이를 사용해 쿼리 및 트랜잭션 제출을 처리할 수 있습니다. 이 라이브러리와 함께 우리는 강력한 Node 콘솔인 [@cosmjs/cli](https://www.npmjs.com/package/@cosmjs/cli) 를 만들었습니다. `await` 를 지원하고 유용한 오류 메시지들에 대한 유형 검사를 수행하며 여러 CosmJS 유틸리티를 미리 로드합니다. 여러분이 Node 콘솔에 익숙하다면 CLI 도구보다 쉽고 강력하다는 것을 확인할 수 있을 것입니다.
+표준 CLI 도구 외에도 Node.js와 최신 브라우저를 지원하는 유연한 TypeScript 라이브러리인 [CosmJS](https://github.com/CosmWasm/cosmjs) 도 제공합니다. 이를 사용해 쿼리 및 트랜잭션 제출을 처리할 수 있습니다. 이 라이브러리와 함께 우리는 강력한 Node 콘솔인 [@cosmjs/cli](https://www.npmjs.com/package/@cosmjs/cli) 를 만들었습니다. `await` 를 지원하고 유용한 오류 메시지들에 대한 타입 검사를 수행하며 여러 CosmJS 유틸리티를 미리 로드합니다. 여러분이 Node 콘솔에 익숙하다면 CLI 도구보다 쉽고 강력하다는 것을 확인할 수 있을 것입니다.
 
 REPL 사용하기:
 
