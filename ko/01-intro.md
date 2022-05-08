@@ -6,7 +6,7 @@ sidebar_position: '1'
 
 # 소개
 
-:::info CosmWasm은 코스모스 생태계를 위해 구축된 새로운 스마트 컨트랙트 플랫폼입니다. 아직 들어보지 못했다면 [이 소개를 확인하세요](https://blog.cosmos.network/announcing-the-launch-of-cosmwasm-cc426ab88e12) . 이 문서의 목적은 이 기술을 사용해 보거나 제품에 사용하려는 개발자를 위해 기술에 대해 자세히 설명하는 것입니다. 특히 Cosmos SDK 경험이 있는 Go 개발자와 블록체인 플랫폼을 찾고 있는 Rust 개발자를 대상으로 합니다. :::
+:::info CosmWasm은 코스모스 생태계를 위해 구축된 새로운 스마트 컨트랙트 플랫폼입니다. 아직 들어보지 못했다면 [이 소개를 확인하세요](https://blog.cosmos.network/announcing-the-launch-of-cosmwasm-cc426ab88e12). 이 문서의 목적은 CosmWasm을 사용해 보거나 제품에 사용하려는 개발자를 위해 상세한 정보를 제공하는 것입니다. 특히 Cosmos SDK 경험이 있는 Go 개발자와 블록체인 플랫폼을 찾고 있는 Rust 개발자를 대상으로 합니다. :::
 
 ## CosmWasm 사용법 {#how-to-use-cosmwasm}
 
