@@ -5,7 +5,7 @@ sidebar_position: '2'
 
 # 컨트랙트 호출에서 액터 모델
 
-[액터 모델](https://en.wikipedia.org/wiki/Actor_model)은 디자인 패턴으로 신뢰할 수 있는 분산 시스템을 만드는데 사용합니다. 기본 포인트는 각 `Actor`는 자신의 내부 상태에 대한 독점적인 접근 권한을 가지며 `Actor`가 서로 호출할 수 없습니다. 대신 일부 `Dispatcher`(시스템 상태를 유지하고 코드와 스토리지를 매핑한다)를 통해 메시지들을 보냅니다. 기본적으로 `Actor` 패턴을 이 인터페이스에서 캡슐화할 수 있습니다:
+[액터 모델](https://en.wikipedia.org/wiki/Actor_model)은 디자인 패턴으로 신뢰할 수 있는 분산 시스템을 만드는데 사용합니다. 기본 포인트는 각 `Actor`는 자신의 내부 상태에 대한 독점적인 접근 권한을 가지며 `Actor`가 서로 호출할 수 없습니다. 대신 일부 `Dispatcher`(시스템 상태를 유지하고 코드와 스토리지를 매핑한다)를 통해 메시지들을 보냅니다. 기본적으로 `Actor` 패턴을 아래의 인터페이스에서 캡슐화할 수 있습니다:
 
 ```rust
 pub trait Actor {
@@ -18,7 +18,7 @@ pub struct Msg {
 }
 ```
 
-이것은 CosmWasm에서 컨트랙트를 모델링하는데 사용하는 기본 모델입니다. 함수에서도 같은 영향을 확인할 수 있습니다.
+이것은 CosmWasm에서 컨트랙트를 모델링하는데 사용하는 기본 모델입니다. 아래의 함수도 같은 영향을 확인할 수 있습니다.
 
 ```rust
 pub fn handle<T: Storage>(store: &mut T, params: Params, msg: Vec<u8>) -> Result<Response>
