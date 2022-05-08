@@ -47,7 +47,7 @@ wasmd keys add wallet
 wasmd keys add wallet2
 ```
 
-상호작용을 위해서는 주소에 약간의 토큰이 필요합니다. 만약 로컬 노드를 사용하는 중이라면 이 단계는 건너 뛰어도 좋습니다. faucet을 통해 토큰을 요청하세요:
+상호작용을 위해서 주소에 약간의 토큰이 필요합니다. 만약 로컬 노드를 사용하는 중이라면 이 단계는 건너 뛰어도 좋습니다. faucet을 통해 토큰을 요청하세요:
 
 ```shell
 JSON=$(jq -n --arg addr $(wasmd keys show -a wallet) '{"denom":"upebble","address":$addr}') && curl -X POST --header "Content-Type: application/json" --data "$JSON" https://faucet.cliffnet.cosmwasm.com/credit
