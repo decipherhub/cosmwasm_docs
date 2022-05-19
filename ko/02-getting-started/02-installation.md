@@ -74,7 +74,7 @@ make install
 wasmd version
 ```
 
-:::info 이 과정에 문제가 있으면 `PATH` 를 확인하십시오. `make install` 은 `wasmd` 를 `$HOME/go/bin` 에 복사합니다. 일반적으로 소스에서 Go 코드를 빌드하는 경우`PATH` 에도 설정되어 있는지 확인하십시오. :::
+:::info 이 과정에 문제가 있으면 `PATH` 를 확인하세요. 기본 설정으로 `make install` 은 `wasmd` 를 `$HOME/go/bin` 에 복사합니다. 일반적으로 소스에서 Go 코드를 빌드하는 경우`PATH` 에도 설정되어 있는지 확인하세요. :::
 
 ## Cosmos SDK에 대한 추가 정보 {#further-information-on-the-cosmos-sdk}
 
