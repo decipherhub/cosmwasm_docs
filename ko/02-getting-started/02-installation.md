@@ -32,7 +32,7 @@ rustup target add wasm32-unknown-unknown
 
 먼저 <a>Rustup.rs</a> 또는 [rust-lang.org](https://rustup.rs/) 에서 <code>rustup-init.exe</code> 를 다운로드하여 실행합니다.
 
-실행한 경우 <a class="_active_edit_href" href="https://visualstudio.microsoft.com/visual-cpp-build-tools/">https://visualstudio.microsoft.com/visual-cpp-build-tools/</a>에서 Visual C++ Build Tools 2019를 수동으로 다운로드하여 설치합니다. "Windows 10 SDK" 및 "English language pack"이 선택되어 있는지 확인합니다.
+필요에 따라 <a class="_active_edit_href" href="https://visualstudio.microsoft.com/visual-cpp-build-tools/">https://visualstudio.microsoft.com/visual-cpp-build-tools/</a>에서 Visual C++ Build Tools 2019를 수동으로 다운로드하여 설치합니다. "Windows 10 SDK" 및 "English language pack"이 선택되어 있는지 확인합니다.
 
 `rustup-init.exe` 설치를 계속하여 진행합니다.
 
