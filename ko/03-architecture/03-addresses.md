@@ -17,7 +17,7 @@ Cosmos SDK의 주소는 20자 길이의 문자열이며 Bech32의 체인 접두�
 
 드물게 사용 되지만, 주소 형식이 바뀌는 경우에 대비한 또 다른 주소 표현이 있습니다.
 
-예를 들어 Bitcoin은 SegWit과 함께 [Base58 에서 Bech32 인코딩 으로 이동](https://en.bitcoin.it/wiki/BIP_0173) 했으며 Rise 역시 v2 업그레이드에서 [Lisk 형식에서 Bech32로 이동](https://medium.com/rise-vision/introducing-rise-v2-521a58e1e9de#41d5)하고 있습니다.
+예를 들어 Bitcoin은 SegWit과 함께 [Base58 에서 Bech32 인코딩으로 이동](https://en.bitcoin.it/wiki/BIP_0173) 했으며 Rise 역시 v2 업그레이드에서 [Lisk 형식에서 Bech32로 이동](https://medium.com/rise-vision/introducing-rise-v2-521a58e1e9de#41d5)하고 있습니다.
 
 즉, `message.signer` 가 트랜잭션에 서명하는 문자열 주소이자 이를 사용하여 계정 잔액을 조회하는 유일한 문자열 주소일 경우 이 인코딩이 변경되면 계정에 액세스할 수 없게 됩니다. 내부 작업을 위한 안정적인 식별자가 반드시 필요합니다.
 
