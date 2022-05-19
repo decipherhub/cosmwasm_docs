@@ -60,7 +60,7 @@ Rust를 처음 접하는 분들을 위해 `stable` 채널에서 안정적인 릴
 
 `wasmd` 는 CosmWasm 플랫폼의 백본입니다. 이는 wasm 스마트 컨트랙트가 활성화된 Cosmos zone을 구현한 것입니다.
 
-아래 코드는 `cosmos/gaia` 저장소를 베이스로 분기된 후 x/wasm가 추가되고 많은 gaia 관련 파일을 정리됐습니다. 그러나 wasmd 바이너리는 x/wasm 모듈의 추가를 제외하고는 gaiad처럼 작동해야 합니다.
+아래 코드는 `cosmos/gaia` 저장소에서 분기한 코드를 기반으로 x/wasm이 추가되고 많은 gaia 관련 파일들이 정리되었습니다. 그러나 wasmd 바이너리는 x/wasm 모듈의 추가를 제외하고는 gaiad처럼 작동해야 합니다.
 
 `make` 소프트웨어가 OS에 설치되어 있지 않은 경우 [여기](https://stackoverflow.com/questions/32127524/how-to-install-and-use-make-in-windows)에 설치하십시오.
 
