@@ -25,7 +25,7 @@ Cosmos SDK의 주소는 20자 길이의 문자열이며 Bech32의 체인 접두�
 
 우리는 *Canonical Address* 를 블록체인에서 내부적으로 사용되는 이진 표현으로 정의합니다. 이는 네이티브 토큰이 인덱싱되는 기준이며 따라서 계정의 수명 동안 절대 변경되어서는 안 됩니다. 이것은 모든 **저장소 조회** 에 사용할 수 있는 표현입니다(주소의 일부를 저장소의 키로 사용하는 경우).
 
-## Naming {#naming}
+## 이름 짓기 {#naming}
 
 점점 [사람이](https://app.ens.domains/about) [읽을 수 있는](https://docs.blockstack.org/core/naming/introduction.html) [이름들](https://iov.one) 이 블록체인과 [이를 넘어서](https://hackernoon.com/everything-you-didnt-know-about-the-handshake-naming-system-how-this-blockchain-project-will-483464309f33)까지 매우 중요해 지고 있습니다.
 
