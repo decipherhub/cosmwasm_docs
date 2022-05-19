@@ -33,21 +33,33 @@ source <(curl -sSL https://raw.githubusercontent.com/CosmWasm/testnets/master/cl
 클라이언트를 설정합니다:
 
 ```shell
-# 테스트를 위한 지갑 추가하기
+# 테스트를 위한 지갑 추가
 wasmd keys add wallet
->
-{
-  "name": "wallet",
-  "type": "local",
-  "address": "wasm1pze5wsf0dg0fa4ysnttugn0m22ssf3t4a9yz3h",
-  "pubkey": "{"@type":"/cosmos.crypto.secp256k1.PubKey","key":"A09EWZLG2oI9mNLG9SbTHjMJEZvH+DGhshjLsUKP5Ijd"}",
-  "mnemonic": "hobby bunker rotate piano satoshi planet network verify else market spring toward pledge turkey tip slim word jaguar congress thumb flag project chalk inspire"
-}
 
 wasmd keys add wallet2
 ```
 
-상호작용을 위해서 주소에 약간의 토큰이 필요합니다. 만약 로컬 노드를 사용하는 중이라면 이 단계는 건너 뛰어도 좋습니다. faucet을 통해 토큰을 요청하세요:
+:::정보
+
+위의 명령을 실행하면 wasmd는 해당 지갑과 관련된 모든 정보를 YAML(.yml) 형식으로 표시합니다.
+
+```
+- name: wallet
+  type: local
+  address: wasm1evvnsrte3rdghy506vu4c87x0s5wx0hpppqdd6
+  pubkey: '{"@type":"/cosmos.crypto.secp256k1.PubKey","key":"A2aKoMPLbUnXkN2zJF/q4lIH/34ybelQSRTg3d9Js86T"}'
+  mnemonic: ""
+
+
+**Important** write this mnemonic phrase in a safe place.
+It is the only way to recover your account if you ever forget your password.
+
+table shell potato spike paddle very asthma raise glare noodle vibrant chuckle indicate spell perfect craft step net radio yellow minor deal blur hybrid
+```
+
+:::
+
+상호작용을 위해서 주소에 약간의 토큰이 필요합니다. 로컬 노드를 사용하는 경우 이 단계를 건너뛸 수 있습니다. faucet에서 토큰 요청하기:
 
 ```shell
 JSON=$(jq -n --arg addr $(wasmd keys show -a wallet) '{"denom":"upebble","address":$addr}') && curl -X POST --header "Content-Type: application/json" --data "$JSON" https://faucet.cliffnet.cosmwasm.com/credit
