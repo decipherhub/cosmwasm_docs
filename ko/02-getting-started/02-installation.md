@@ -47,7 +47,7 @@ wasm32 대상 설치:
 ```shell
 rustup default stable
 cargo version
-# 만약 버전이 1.55.0+ 이하라면, 업데이트 하십시오
+# 만약 버전이 1.55.0+ 이하라면, 업데이트하세요
 rustup update stable
 
 rustup target list --installed
