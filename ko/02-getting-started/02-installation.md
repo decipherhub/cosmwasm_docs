@@ -16,7 +16,7 @@ Rust로 작업한 적이 없다면 우선 몇 가지 도구를 설치해야 합�
 
 ### Linux와 Mac에서 Rust 설치하기 {#installing-rust-in-linux-and-mac}
 
-먼저 [Rustup을 설치합니다](https://rustup.rs/) . 설치가 완료되면 wasm32의 대상이 있는지 확인하십시오.
+먼저 [Rustup을 설치합니다](https://rustup.rs/). 설치가 완료되면 wasm32의 대상이 있는지 확인하세요.
 
 ```shell
 rustup default stable
