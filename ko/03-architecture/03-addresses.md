@@ -5,7 +5,7 @@ sidebar_position: '3'
 
 # 이름과 주소
 
-거의 모든 블록체인은 공개 키의 해시를 통해 외부 행위자를 식별하기 위해 주소를 사용하며, 많은 새로운 블록체인은 이를 확장하여 고유한 주소가 있는 온체인 "스마트 컨트랙트"도 식별합니다. 체인에서 주소는 일반적으로 해싱 함수에서 파생되는 20바이트 또는 32바이트 길이의 간결하고 변경할 수 없는 이진 형식을 사용하여 표시됩니다. 클라이언트에 표시되어 사람이 읽을 수 있는 다양한 형식의 이진 주소 표현이 있습니다. 예를 들어, [Bech32](https://en.bitcoin.it/wiki/Bech32) `bc1qc7slrfxkknqcq2jevvvkdgvrt8080852dfjewde450xdlk4ugp7szw5tk9` , hex `0x8617E340B3D01FA5F11F306F4090FD50E238070D` 또는 [checksumned hex](https://github.com/ethereum/EIPs/blob/master/EIPS/eip-55.md) `0x5aAeb6053F3E94C9b9A09f33669435E7Ef1BeAed` , 그리고 [large integers](https://research.kudelskisecurity.com/2018/01/16/blockchains-how-to-steal-millions-in-264-operations/) `3040783849904107057L`.
+거의 모든 블록체인은 공개 키의 해시를 통해 외부 액터들을 식별하기 위해 주소를 사용하며, 많은 새로운 블록체인은 이를 확장하여 고유한 주소가 있는 온체인 "스마트 컨트랙트"도 식별합니다. 체인에서 주소는 일반적으로 해싱 함수에서 파생되는 20바이트 또는 32바이트 길이의 간결하고 변경할 수 없는 이진 형식을 사용하여 표시됩니다. 클라이언트에 표시되어 사람이 읽을 수 있는 다양한 형식의 이진 주소 표현이 있습니다. 예를 들어, [Bech32](https://en.bitcoin.it/wiki/Bech32) `bc1qc7slrfxkknqcq2jevvvkdgvrt8080852dfjewde450xdlk4ugp7szw5tk9` , hex `0x8617E340B3D01FA5F11F306F4090FD50E238070D` 또는 [checksumned hex](https://github.com/ethereum/EIPs/blob/master/EIPS/eip-55.md) `0x5aAeb6053F3E94C9b9A09f33669435E7Ef1BeAed` , 그리고 [large integers](https://research.kudelskisecurity.com/2018/01/16/blockchains-how-to-steal-millions-in-264-operations/) `3040783849904107057L`가 있습니다.
 
 ## Addr {#addr}
 
