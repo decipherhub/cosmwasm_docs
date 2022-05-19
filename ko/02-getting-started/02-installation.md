@@ -8,7 +8,7 @@ sidebar_position: '2'
 
 ## Go {#go}
 
-[공식 문서](https://github.com/golang/go/wiki#working-with-go)를 따라 golang을 설치할 수 있습니다. 최신 버전의 wasmd은 v1.17+가 필요합니다.
+[공식 문서](https://github.com/golang/go/wiki#working-with-go)를 따라 golang을 설치할 수 있습니다. 최신 버전의 wasmd은 `v1.17+` 이상의 go 버전이 요구됩니다.
 
 ## Rust {#rust}
 
