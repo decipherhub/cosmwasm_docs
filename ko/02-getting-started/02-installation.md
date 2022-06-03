@@ -4,7 +4,7 @@ sidebar_position: '2'
 
 # 설치
 
-이 섹션에서는 Cosmos SDK 기반 체인에서 스마트 컨트랙트를 개발, 배포하고 이를 즐길 수 있도록 여러분의 머신을 설정해볼 것입니다.
+이 섹션에서는 Cosmos SDK 기반 체인에서 스마트 컨트랙트를 개발, 배포하고 이를 즐길 수 있도록 여러분의 기기를 설정해볼 것입니다.
 
 ## Go {#go}
 
@@ -54,13 +54,13 @@ rustup target list --installed
 rustup target add wasm32-unknown-unknown
 ```
 
-Rust를 처음 접하는 분들을 위해 `stable` 채널에서 안정적인 릴리스가 6주마다  나옵니다. `nightly` 채널은 최신 버전이며 (테스트용) 버전이 한두 개일 뿐만 아니라 API가 변경될 수 있는 일부 불안정한 기능을 추가로 허용합니다. `wasm` 을 컴파일하려면 `stable` 을 사용하고 싶을 것입니다. `nightly` 를 사용하여 gas 계량 등의 단일 패스 컴파일러에 필요한 `wasmd` 용 런타임을 컴파일합니다.
+Rust를 처음 접하는 분들을 위해 `stable` 채널에서 안정적인 릴리스가 6주마다  배포됩니다. `nightly` 채널은 최신 버전이며 (테스트용) 버전이 한두 개일 뿐만 아니라 API가 변경될 수 있는 일부 불안정한 기능을 추가로 허용합니다. `wasm` 을 컴파일하기 위해 `stable` 을 사용하고 싶을 것입니다. `nightly` 를 사용하여 gas 계량 등의 단일 패스 컴파일러에 필요한 `wasmd` 용 런타임을 컴파일합니다.
 
 ## wasmd {#wasmd}
 
 `wasmd` 는 CosmWasm 플랫폼의 백본입니다. 이는 wasm 스마트 컨트랙트가 활성화된 Cosmos zone을 구현한 것입니다.
 
-아래 코드는 `cosmos/gaia` 저장소에서 분기한 코드를 기반으로 x/wasm이 추가되고 많은 gaia 관련 파일들이 정리되었습니다. 그러나 wasmd 바이너리는 x/wasm 모듈의 추가를 제외하고는 gaiad처럼 작동해야 합니다.
+아래 코드는 `cosmos/gaia` 저장소에서 분기한 코드를 기반으로 x/wasm이 추가되고 많은 gaia 스펙 파일들이 정리되었습니다. 그러나 wasmd 바이너리는 x/wasm 모듈이 추가된 것을 제외하고는 gaiad처럼 작동해야 합니다.
 
 `make` 소프트웨어가 OS에 설치되어 있지 않은 경우 [여기](https://stackoverflow.com/questions/32127524/how-to-install-and-use-make-in-windows)에 설치하십시오.
 
@@ -78,7 +78,7 @@ wasmd version
 
 ## Cosmos SDK에 대한 추가 정보 {#further-information-on-the-cosmos-sdk}
 
-이것들은 [Cosmos SDK](https://github.com/cosmos/cosmos-sdk) 의 모든 안정적인 기능을 활용하는 블록체인의 인스턴스를 나타냅니다. 따라서 `wasmd` 는 모두 동일한 기능을 가지고 있습니다(WASM 스마트 컨트랙트 포함). 이러한 기능을 사용하는 방법에 대해 자세히 알아보려면 [Gaia 문서](https://github.com/cosmos/gaia/tree/main/docs/hub-tutorials) 를 참조하세요. 일반적으로 Cosmos SDK를 시작하는 방법에 대해 자세히 알아보려면 응용 프로그램 별 블록체인을 위한 사용자 지정 모듈을 빌드하는 방법을 보여주는 [자습서](https://tutorials.cosmos.network/) 시리즈를 살펴보세요.
+이는 [Cosmos SDK](https://github.com/cosmos/cosmos-sdk) 의 모든 안정적인 기능을 활용하는 블록체인의 인스턴스를 나타냅니다. 따라서 `wasmd` 는 모두 동일한 기능을 가지고 있습니다(WASM 스마트 컨트랙트 포함). 이러한 기능을 사용하는 방법에 대해 자세히 알아보려면 [Gaia 문서](https://github.com/cosmos/gaia/tree/main/docs/hub-tutorials) 를 참조하세요. 일반적으로 Cosmos SDK를 시작하는 방법에 대해 자세히 알아보려면 애플리케이션 별 블록체인을 위한 사용자 지정 모듈을 빌드하는 방법을 보여주는 [튜토리얼](https://tutorials.cosmos.network/) 시리즈를 살펴보세요.
 
 ## IDE 설정 {#setting-up-your-ide}
 
@@ -88,8 +88,8 @@ VSCode( [다운로드 링크](https://code.visualstudio.com/download) )를 사�
 
 [VSCode용 RLS](https://marketplace.visualstudio.com/items?itemName=rust-lang.rust)
 
-다른 옵션은 Intellij IDEA Community Edition( [다운로드 링크](https://www.jetbrains.com/idea/download/) )과 Rust 플러그인을 사용하는 것입니다. 인라인 언어 기능을 빠르게 지원합니다. 특히 (중첩된) 제네릭으로 작업할 때 매우 유용할 수 있도록 추론된 유형의 변수를 보여줍니다. 대부분의 구문 오류를 매우 빠르게 포착하지만 전부는 아닙니다. 이것은 때때로 오류를 찾기 위해 직접 컴파일 실패를 확인해야 한다는 것을 의미합니다. 다른 Intellij 제품(예: Goland)을 사용하는 경우 다음을 사용하십시오.
+다른 옵션은 Intellij IDEA Community Edition( [다운로드 링크](https://www.jetbrains.com/idea/download/) )과 Rust 플러그인을 사용하는 것입니다. 인라인 언어 기능을 빠르게 지원합니다. 특히 추론된 유형의 변수를 보여주는 기능은 (중첩된) 제네릭으로 작업할 때 매우 도움이 됩니다. 대부분의 구문 오류를 매우 빠르게 포착하지만 모든 것을 찾아주지는 않습니다. 이는 때때로 오류를 찾기 위해 직접 컴파일 실패를 확인해야 한다는 것을 의미합니다. 다른 Intellij 제품(예: Goland)을 사용하는 경우 다음을 사용하십시오.
 
 [Intellij용 RUST](https://intellij-rust.github.io/)
 
-더 많은 편집기가 있으며 일부는 최소한 구문 강조 표시와 같이 다양한 수준의 Rust 지원을 제공하지만 다른 편집기(예: Sublime, Emacs, Vim)를 선호하지 않고 Rust를 처음 사용한다면 한 위의 두 가지 중 하나를 사용하는 것이 좋습니다. 언어에 익숙해지면 언제든지 다른 편집기를 사용자 정의대로 사용할 수 있습니다.
+다양한 수준으로 Rust를 지원하는 더 많은 편집기가(예: Sublime, Emacs, Vim) 있으며 그중 일부는 최소한의 구문 강조 표시와 같은 기능을 지원하지만, Rust를 처음 사용한다면 위에서 설명한 두 가지 중 하나를 사용하는 것이 좋습니다. 언어에 익숙해지면 언제든지 다른 편집기를 입맛대로 사용할 수 있습니다.
