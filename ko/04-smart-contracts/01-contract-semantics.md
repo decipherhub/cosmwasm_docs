@@ -10,13 +10,13 @@ sidebar_position: '1'
 
 아래 섹션에서 저희는 `execute` 호출이 어떻게 동작을 하는지 설명하겠습니다. 아래와 같은 *mutating* 액션에도 동일한 시맨틱스가 적용이 됩니다 - `instantiate`, `migrate`, `sudo` 등.
 
-### SDK Context
+### SDK 컨텍스트
 
 CosmWasm을 살펴보기 전에 [Cosmos SDK](https://v1.cosmos.network/sdk) 와 통합하는 블록체인 프레임워크에 의해 실행되는 시멘틱스(문서화가 다소 덜 되어있습니다)를 살펴봐야 합니다. [Tendermint BFT](https://tendermint.com/core/) Consensus Engine을 기반으로 합니다. CosmWasm을 도착하기 전(그리고 이후) 트랜잭션을 처리하는 방법을 먼저 살펴보겠습니다.
 
 먼저, Tendermint 엔진은 다음 블록에 포함될 트랜잭션 목록에 대한 2/3 이상의 합의를 찾습니다. 이것은 *트랜잭션들을 실행하지 않고* 이루어집니다. 최소한의 사전 필터링이 Cosmos SDK 모듈에 의해 이루어지는데, 유효한 형식의 트랜잭션인지, 충분한 가스비가 있는지, 충분한 비용을 지불할 수 있는 주소에 의해 서명이 되었는지 등을 확인합니다. 주의할 것은, 블록에 에러가 있는 트랜잭션들이 많이 포함되어 있을 수 있다는 것입니다.
 
-Once a block is committed (typically every 5s or so), the transactions are then fed to the Cosmos SDK sequentially in order to execute them. Each one returns a result or error along with event logs, which are recorded in the `TxResults` section of the next block. The `AppHash` (or merkle proof or blockchain state) after executing the block is also included in the next block.
+블록이 커밋이 되면(일반적으로 매 5초마다), 트랜잭션들은 실행되기 위해 Cosmos SDK로 순차적으로 들어가게 됩니다. 각 트랜잭션은 이벤트 로그와 함께 결과나 에러를 반환하는데, 다음 블록의 `TxResults` 섹션에 기록이 됩니다. 블록 실행 이후에 `AppHash`(또는 머클 증명 또는 블록체인 상태)가 다음 블록에 포함이 됩니다.
 
 Cosmos SDK `BaseApp` 은 고립된(isolated) 컨텍스트에서 각 트랜잭션을 처리합니다. 먼저 모든 서명을 증명하고 가스비를 공제합니다. "가스 계량기(Gas Meter)"를 설정하여 수수료로 지불된 가스의 양으로 실행을 제한합니다. 그런 다음 트랜잭션을 실행하기 위해 고립된 컨텍스트를 만듭니다. 이를 통해 코드는 체인의 현재 상태(마지막 트랜잭션이 완료된 후)를 읽을 수 있지만, 오류가 발생하면 커밋되거나 롤백될 수 있는 캐시에만 기록(write)됩니다.
 
