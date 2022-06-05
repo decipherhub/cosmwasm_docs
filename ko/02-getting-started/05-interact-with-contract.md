@@ -30,7 +30,7 @@ wasmd query wasm code $CODE_ID $NODE download.wasm
 diff artifacts/cw_nameservice.wasm download.wasm
 ```
 
-### 계약 인스턴스화 {#instantiating-the-contract}
+### 컨트랙트 인스턴스화 {#instantiating-the-contract}
 
 이제 wasm 컨트랙트의 인스턴스를 생성할 수 있습니다. 여기에서 먼저 컨트랙트를 인스턴스화하고 이에 대한 쿼리 작업을 수행합니다.
 
