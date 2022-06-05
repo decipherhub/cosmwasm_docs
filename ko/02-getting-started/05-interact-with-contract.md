@@ -25,7 +25,7 @@ CODE_ID=$(echo $RES | jq -r '.logs[0].events[-1].attributes[0].value')
 # 아직 컨트랙트가 없으므로
 wasmd query wasm list-contract-by-code $CODE_ID $NODE --output json
 
-# you can also download the wasm from the chain and check that the diff between them is empty
+# 체인으로부터 wasm을 다운로드하여 다른점이 있는지 확인할 수도 있습니다.
 wasmd query wasm code $CODE_ID $NODE download.wasm
 diff artifacts/cw_nameservice.wasm download.wasm
 ```
