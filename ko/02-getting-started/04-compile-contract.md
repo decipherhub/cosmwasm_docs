@@ -10,7 +10,7 @@ sidebar_position: '4'
 
 ## 컨트랙트를 컴파일링하고 테스트하는 방법 {#compiling-and-testing-contract}
 
-[`cw-contracts`](https://github.com/InterWasm/cw-contracts) 를 수집하는 리포지토리를 다운로드하고 name service를 모방한 기존의 간단한 name service 컨트랙트를 사용해 보겠습니다. 해당 튜토리얼은 사실상 cosmos-sdk 입문 튜토리얼입니다. 먼저 리포지토리를 clone하고 wasm 번들을 만들어보겠습니다.
+[`cw-contracts`](https://github.com/InterWasm/cw-contracts) 를 수집하는 리포지토리를 다운로드하고 name service를 모방한 기존의 간단한 네임서비스 컨트랙트를 사용해 보겠습니다. 해당 튜토리얼은 사실상 cosmos-sdk 입문 튜토리얼입니다. 먼저 리포지토리를 clone하고 wasm 번들을 만들어보겠습니다.
 
 ```shell
 # 코드 클론하기
