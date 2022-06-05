@@ -40,7 +40,7 @@ RUSTFLAGS='-C link-arg=-s' cargo wasm
 RUST_BACKTRACE=1 cargo unit-test
 ```
 
-몇가지 컴파일 단계를 거치고 나면, 아래의 메세지를 볼 수 있습니다.
+몇가지 컴파일 단계를 거치고 나면, 다음 메세지를 확인할 수 있습니다:
 
 ```text
 running 5 tests
