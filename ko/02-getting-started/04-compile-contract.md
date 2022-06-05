@@ -24,7 +24,7 @@ rustup default stable
 cargo wasm
 ```
 
-컴파일한 뒤 `target/wasm32-unknown-unknown/release/cw_nameservice.wasm` 파일을 생성해야 합니다. 간단한 `ls -lh` 는 약 1.7MB로 표시됩니다. 릴리스 빌드이지만 불필요한 코드가 모두 제거되지는 않습니다. 훨씬 더 작은 버전을 생성하려면 다음을 실행하여 컴파일러에게 사용되지 않는 모든 코드를 제거하도록 지시할 수 있습니다.
+컴파일한 뒤 `target/wasm32-unknown-unknown/release/cw_nameservice.wasm` 파일이 생성됩니다. 간단한 `ls -lh` 는 약 1.7MB로 표시됩니다. 릴리스 빌드이지만 불필요한 코드가 모두 제거되지는 않습니다. 훨씬 더 작은 버전을 생성하려면 다음을 실행하여 컴파일러에게 사용되지 않는 모든 코드를 제거하도록 지시할 수 있습니다.
 
 ```shell
 RUSTFLAGS='-C link-arg=-s' cargo wasm
