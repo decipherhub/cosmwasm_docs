@@ -4,7 +4,7 @@ sidebar_position: '6'
 
 # 다음 단계
 
-앞서 살펴본 것들은 name service 컨트랙트에 대한 매우 간단한 예제이지만 여러분이 어떤 일을 할 수 있는지 알려줍니다. 여러분이 업로드한 wasm 코드와 여러분이 전송한 json 메시지에 의해서만 제약??됩니다. 다음 단계는 스마트 컨트랙트를 수정하여 도둑이 자금을 훔쳐갈 수 있도록 하는 백도어를 넣는 [Hijack Escrow 튜토리얼](/tutorials/hijack-escrow/intro) 입니다.
+앞서 살펴본 것들은 네임서비스 컨트랙트에 대한 매우 간단한 예제이지만, 여러분에게 어떤 일들이 가능할지 알려줍니다. 여러분이 업로드한 wasm 코드와 전송한 json 메시지에 따른 제한이 있을 뿐입니다. 다음 단계는 스마트 컨트랙트를 수정하여 도둑이 자금을 훔쳐갈 수 있도록 백도어를 넣는 [Hijack Escrow 튜토리얼](/tutorials/hijack-escrow/intro) 입니다.
 
 - [비디오 및 워크샵](/tutorials/videos-workshops) : 저희가 비디오 및 워크샵 리소스를 선별했습니다.
 - [Learn](/tutorials/simple-option/intro) 에서는 단계별 설명, 코드 스니펫, 스크립트 등을 통해 처음부터 끝까지 스마트 컨트랙트를 개발하는 방법을 알 수 있습니다.
