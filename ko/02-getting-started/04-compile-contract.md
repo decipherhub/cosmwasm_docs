@@ -55,7 +55,7 @@ test result: ok. 5 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out
 
 `RUST_BACKTRACE=1` 은 모든 오류에 대한 전체 스택 추적을 제공하므로 유용하게 쓸 수 있습니다. 이것은 유닛 테스트에서만 작동합니다(컴파일된 wasm이 아닌 기본 rust 코드를 테스트합니다). 또한, `cargo wasm` 및 `cargo unit-test`는 `.cargo/config` 에 정의된 alias일 뿐입니다. cargo flag를 이해하려면 `.cargo/config` 를 살펴보시면 됩니다.
 
-## 컴파일링 최적화하기 {#optimized-compilation}
+## 컴파일 최적화하기 {#optimized-compilation}
 
 가스 비용을 줄이려면 바이너리 크기가 작을수록 좋습니다. 바이너리 크기가 작을수록 배포 비용이 절감되고 모든 상호 작용에 대한 수수료가 낮아집니다. 이를 도와주는 도구가 있습니다. <a>Rust-optimizer</a> 를 사용하여 <strong>production 코드 최적화</strong>를 할 수 있습니다. **Rust-optimizer** 는 CosmWasm 스마트 컨트랙트의 재현 가능한??? 빌드를 생성합니다. 써드파티가 해당 컨트랙트가 실제로 claim된 코드인지 확인할 수 있다는 것을 의미합니다.
 
