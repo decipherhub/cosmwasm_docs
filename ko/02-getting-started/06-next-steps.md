@@ -11,7 +11,7 @@ sidebar_position: '6'
     - [Dev Academy](/dev-academy/intro) 는 CosmWasm 스마트 컨트랙트 및 클라이언트를 위한 체계적인 교육자료를 제공합니다.
 - [Terra Academy](https://academy.terra.money/courses/cosmwasm-smart-contracts-i) :  이 주제를 떠나 좋은 튜토리얼을 제공합니다
 - [cw-awesome](https://github.com/InterWasm/cw-awesome) : 선별된 CosmWasm 리소스입니다.
-- [cw-template](https://github.com/CosmWasm/cw-template) : CosmWasm 스타터 프로젝트. 리포지토리를 clone하지 마시고, README를 팔로우하여 뼈대?를 잡기위해  `cargo-generate` 를 사용하십시오
+- [cw-template](https://github.com/CosmWasm/cw-template) : CosmWasm 스타터 프로젝트. 리포지토리를 clone하지 마시고, README를 팔로우하여 뼈대를 잡기위해  `cargo-generate` 를 사용하십시오
 - [cw-plus](https://github.com/CosmWasm/cw-plus) : Production 등급, 많은 자금을 위한 보안, 스마트 컨트랙트에 대한 내용입니다. [Confio](https://confio.gmbh/)가 만들고 관리하고 있습니다. 커뮤니티에서 만든 고품질 스마트 컨트랙트가 여기에서 호스팅됩니다.
 - [cw-contracts](https://github.com/InterWasm/cw-contracts) : 커뮤니티가 만든 스마트 컨트랙트입니다. 많은 기여 바랍니다.
 - [InterWasm DAO](https://github.com/InterWasm/DAO) : CosmWasm DAO입니다. 여러분이 커뮤니티를 위한 좋은 프로젝트를 만들었고, 펀딩이나 도움이 필요하면 [IWP](https://github.com/InterWasm/DAO#interwasm-proposalsiwps) 를 만드십시오.
