@@ -11,9 +11,9 @@ sidebar_position: '4'
 
 ## Raw 쿼리 {#raw-queries}
 
-The simplest query to implement is just raw read access to the key-value store. If the caller (either external client, or other contract) passes in the raw binary key that is used in the contract's storage, we can easily return the raw binary value. The benefit of this approach is that it is very easy to implement and universal. The downside is that it links the caller to the *implementation* of the storage and requires knowledge of the exact contract being executed.
+실행하기 가장 간단한 형태의 쿼리는 키-값 스토리지에 대한 raw 읽기 액세스입니다. 만약 호출자(외부 클라이언트 또는 다른 컨트랙트)가 컨트랙트 스토리지에 사용되는 raw 바이너리 키를 전달하면, raw 바이너리 값을 쉽게 반환할 수 있습니다. 이 방법은 구현이 매우 쉽고 보편적이라는 장점이 있습니다. 단점은 호출자가 저장소의 *구현*에 연결되고 실행 중인 컨트랙트에 대한 구체적인 이해가 필요하다는 것입니다.
 
-This is implemented inside the `wasmd` runtime and circumvents the VM. As a consequence it requires no support from the CosmWasm contract and all contract state is visible. Such a `query_raw` function is exposed to all callers (external and internal).
+Raw 쿼리는 `wasmd` 런타임 내에서 구현되고 VM을 우회합니다. 결과적으로, CosmWasm 컨트랙트의 지원이 필요하지 않고 모든 컨트랙트의 상태가 공개됩니다. 이러한 `query_raw` 함수는 모든 호출자(외부 및 내부)에게 노출됩니다.
 
 ## 커스텀 쿼리 {#custom-queries}
 
@@ -21,23 +21,23 @@ This is implemented inside the `wasmd` runtime and circumvents the VM. As a cons
 
 커스텀 쿼리를 실행하기 위해, 읽기 전용 모드로 데이터 저장소에 접근할 수 있는 `query` 함수 노출을 각 컨트랙트에 허용해야합니다. 이는 원하는 어떤 데이터든 가져올 수 있고, 심지어 계산도 수행할 수 있습니다. 이 메소드는 모든 호출자(외부 및 내부) 에게 `query_custom`으로 노출됩니다. 데이터 포맷(쿼리와 응답 모두)은 컨트랙트가 원하는 어떤 것이던 될 수 있고, `HandleMsg` 및 `InitMsg`와 함께 공개 스키마에 기술되어야 합니다.
 
-Note that executing a contract may consume an unbounded amount of gas. Whereas `query_raw` will read one key and has a small, mostly fixed cost, we need to enforce a gas limit on these queries. This is done differently for external and internal calls and discussed below.
+컨트랙트를 실행하면 무한한 양의 가스가 소모될 수 있기에 주의해야 합니다. `query_raw`는 하나의 키를 읽기 때문에 거의 고정적이고 적은 비용이 들지만, 이러한 쿼리에도 가스 리밋을 적용해야 합니다. 이것은 외부 및 내부 호출에 대해 다르게 수행되며 아래에서 설명하겠습니다.
 
 ## 외부 쿼리 {#external-queries}
 
-External queries are the typical way all web and cli clients work with the blockchain. They call Tendermint RPC, which calls into `abci_query` in the Cosmos SDK, which delegates down to the module to handle it. As far as I know, there is an infinite gas limit on queries, as they are only executed on one node, and cannot slow down the entire blockchain. This functionality is generally not exposed on validating nodes. The query functionality exposed in the current SDK is hard coded, and has execution time limits designed by the developers. This limits abuse. But what about someone uploading a wasm contract with an infinite loop, and then using that to DoS any public RPC node that exposes querying?
+외부 쿼리는 모든 웹 및 cli 클라이언트가 블록체인과 작용하는 전형적인 방식입니다. Cosmos SDK에서 `abci_query`를 호출하는 Tendermint RPC를 호출하며, Cosmos SDK는 이를 처리하기 위해 모듈에 위임합니다. 쿼리는 한 개의 노드에서 실행되기 때문에 가스제한이 없고 전체 블록체인을 느리게 만들지도 않습니다. 일반적으로 밸리데이터 노드에는 구현되어 있지 않은 기능입니다. 현재 SDK에 있는 쿼리 기능은 하드 코딩되어 있으며 개발자가 설계한 실행시간 제한이 있어서 어뷰징을 제한할 수 있습니다. 그렇다면 누군가가 무한 루프를 가진 wasm 컨트랙트를 업로드한 다음 쿼리를 노출한 퍼블릭 RPC 노드에 DoS공격을 하면 어떻게 될까요?
 
-To avoid such issues, we need to define some fixed gas limit for all `query_custom` transactions called externally. This will not charge a fee, but is used to limit abuse. However, it is difficult to define a standard value, for a free public node would prefer a small amount, but I may want to sync my own archive node and perform complex queries. Thus, a gas limit for all `query_custom` calls can be defined in an app-specific configuration file, which can be customized by each node operator, with a sensible default limit. This will allow public nodes to protect themselves from complex queries, while still allowing optional queries to perform large aggregation over all contract data in specially-configured nodes.
+이러한 문제를 방지하기 위해, 외부에서 호출되는 모든 `query_custom` 트랜잭션에 대해 고정된 가스 한도를 정해야 합니다. 고정 가스 한도는 수수료를 부과하지 않고 어뷰징을 제한하는 데 사용됩니다. 무료 퍼블릭 노드는 소액을 선호하기 때문에 기준값을 정의하기 어렵지만, 아카이브 노드를 동기화하고 복잡한 쿼리를 수행하고 싶은 경우도 있습니다. 따라서 모든 `query_custom` 호출에 대한 가스 한도는 앱별 구성(configuration) 파일에서 정의할 수 있으며, 이는 합리적인 기본 한도로 각 노드 운영자가 정할 수 있습니다. 이를 통해 퍼블릭 노드는 복잡한 쿼리로부터 자신을 보호할 수 있으면서, 특별하게 설정된 노드는 몇 가지 쿼리로 모든 컨트랙트 데이터에 대해 대규모 집계를 수행할 수 있습니다.
 
-Note that the `abci_query` call never reads the current "in-progress" state of the modules, but uses a read-only snapshot of the state after the last committed block.
+`abci_query` 호출은 모듈의 현재 "진행 중" 상태를 절대 읽지 않고, 최근 커밋된 블록 이후 상태의 읽기 전용 스냅샷을 사용하는 것을 주의하세요.
 
 ## 내부 쿼리 {#internal-queries}
 
-While many interactions between contracts can easily be modeled by sending messages, there are some cases where we would like to synchronously query other modules, without altering their state. For example, if I want to resolve a name to a [Address](03-addresses.md), or if I want to check KYC status of some account (in another contract) before enabling an action. One could model this as a series of messages, but it is quite complex and makes such simple use-cases almost unusable in the system.
+컨트랙트 간 많은 상호 작용은 메시지를 전송해 쉽게 모델링할 수 있지만, 상태를 변경하지 않고 다른 모듈들을 동기적으로 쿼리하고 싶은 경우도 있습니다. 예를 들어 [Address](03-addresses.md)를 통해 이름을 확인하려는 경우나 작업을 활성화하기 전에 일부 계정(다른 컨트랙트의)의 KYC 상태를 확인하려는 경우입니다. 이것을 일련의 메시지로 모델링할 수는 있지만 매우 복잡하며 간단한 use-case도 사용할 수 없게 만듭니다.
 
-However, this design violates one of the basic principles of the [actor model](02-actor.md), namely that each contract has exclusive access to its own internal state. (Both `query_raw` and `query_custom` fail in this regard). Far from just being a theoretical issue, this may lead to concurrency and reentrancy issues if not handled correctly. We do not want to push such safety critical reasoning into the laps of the contract developers, but rather provide these security guarantees in the platform. However, providing old data also leads to many possible errors and bugs, especially since we use the same `Querier` interface to interact with the native SDK modules, *including querying the contract's own balance*.
+그러나 이 디자인은 [actor model](02-actor.md)의 주요 원칙 중 하나인 각 컨트랙트는 자체 내부 상태에 독점적으로 액세스할 수 있다를 위반합니다. (이 점에서 `query_custom`와 `query_raw`도 둘 다 실패입니다). 이론적인 문제 말고도, 이것이 올바르게 처리되지 않으면 동시성 및 재진입 문제로 이어질 수 있습니다. 저희는 안전에 중요한 이슈를 컨트랙트 개발자에게 전가하고 싶지 않고, 오히려 플랫폼에서 보안을 보장하고 싶습니다. 그러나 오래된 데이터를 제공하는 것도 많은 오류와 버그가 발생시킬 수 있습니다. 특히, *컨트랙트의 잔액을 쿼리하는 것을 포함해* 네이티브 SDK 모듈과 상호작용하기 위해 동일한 `Querier` 를 사용할 때 특히 그렇습니다.
 
-As such, we provide the `Querier` with read-only access to the state snapshot *right before execution of the current CosmWasm message*. Since we take a snapshot and both the executing contract and the queried contract have read-only access to the data *before the contract execution*, this is still safe with Rust's borrowing rules (as a placeholder for secure design). The current contract only writes to a cache, which is flushed afterwards on success.
+따라서 현재 *CosmWasm 메세지를 실행하기 직전*의 상태를 스냅샷하기 위한 읽기 전용 액세스 권한의 `Querier`를 제공합니다. 우리가 스냅샷을 찍고 실행 컨트랙트와 쿼리된 컨트랙트 모두 *컨트랙트 실행 전* 데이터에 대한 읽기 전용 접근 권한을 갖기 때문에 이것은 Rust의 빌림 규칙(보안 설계자로서)에서 여전히 안전합니다. 현재 컨트랙트는 캐시에만 쓰고 나중에 성공하면 플러시됩니다.
 
 재진입을 피해야 하는 것도 문제입니다. 이러한 쿼리는 동기적으로 호출되기 때문에 호출 컨트랙트를 다시 호출하여 문제를 일으킬 수 있습니다. 쿼리에는 읽기 전용 액세스 권한만 있고 부작용을 가질 수 없어, 원격 컨트랙트를 동기적으로 실행하는 것만큼 위험하지는 않지만 여전히 고려해야 할 문제입니다. 특히, 쿼리는 현재 실행 전의 상태에만 접근할 것입니다. 의도적으로 잘못된 데이터를 반환하는 쿼리 함수보다 더 많은 오류가 발생하지는 않겠지만 더 살펴볼 필요는 있습니다.
 
