@@ -18,7 +18,7 @@ sidebar_position: '1'
 
 ## 아이템(Item)
 
-The usage of an [`Item`](./src/item.rs) is pretty straight-forward. You must simply provide the proper type, as well as a database key not used by any other item. Then it will provide you with a nice interface to interact with such data.
+[`Item`](./src/item.rs) 의 사용법은 매우 간단합니다. 적절한 유형과 다른 항목에서 사용하지 않는 데이터베이스 키를 제공하기만 하면 됩니다. 그런 다음 이러한 데이터와 상호 작용할 수 있는 멋진 인터페이스를 제공합니다.
 
 `Singleton`을 사용할때 가장 크게 바뀐 부분은 더 이상 `Storage`를 내부에 저장하지 않는다는 것입니다. 즉, 객체의 변수를 읽고 및 쓸 필요가 없습니다. 또한 `const fn`을 사용하여 `Item` 을 생성하여 매번 생성해야 하는 함수가 아닌 전역(global) 컴파일 상수로 정의할 수 있어 타이핑을 줄이고 가스비도 절약할 수 있습니다.
 
@@ -154,7 +154,7 @@ fn demo() -> StdResult<()> {
 
 ### 키 유형(Key types)
 
-A `Map` key can be anything that implements the `PrimaryKey` trait. There are a series of implementations of `PrimaryKey` already provided (see `packages/storage-plus/src/keys.rs`):
+`Map` 키는 `PrimaryKey` 특성을 구현하는 모든 것이 될 수 있습니다. `PrimaryKey` 의 일련의 구현이 이미 제공되었습니다( `packages/storage-plus/src/keys.rs` 참조).
 
 - `impl<'a> PrimaryKey<'a> for &'a [u8]`
 - `impl<'a> PrimaryKey<'a> for &'a str`
@@ -347,7 +347,7 @@ fn demo() -> StdResult<()> {
 
 원래 `cw721-base` 컨트랙트에서 가져온 `IndexedMap` 정의 및 사용의 한 예를 살펴보겠습니다.
 
-### Definition
+### 정의
 
 ```rust
 pub struct TokenIndexes<'a> {
@@ -373,7 +373,7 @@ pub fn tokens<'a>() -> IndexedMap<'a, &'a str, TokenInfo, TokenIndexes<'a>> {
 }
 ```
 
-Let's discuss this piece by piece:
+이 부분에 대해 논의해 보겠습니다.
 
 ```rust
 pub struct TokenIndexes<'a> {
@@ -385,7 +385,7 @@ pub struct TokenIndexes<'a> {
 
 `owner` 인덱스가 `MultiIndex` 임을 확인했습니다. 다중 인덱스(Multi-index)는 반복되는 값을 키로 가질 수 있습니다. 기본 키는 내부적으로 다중 인덱스 키의 마지막 요소로 사용되어 반복되는 인덱스 값을 명확하게 합니다. 이름에서 알 수 있듯이 소유자별 토큰에 대한 인덱스입니다. 소유자가 여러 토큰을 가질 수 있다는 점을 감안할 때 주어진 소유자가 가진 모든 토큰을 나열/반복할 수 있으려면 `MultiIndex` 가 필요합니다.
 
-The `TokenInfo` data will originally be stored by `token_id` (which is a string value). You can see this in the token creation code:
+`TokenInfo` 데이터는 원래 `token_id` (문자열 값)에 의해 저장됩니다. 토큰 생성 코드에서 이를 확인할 수 있습니다.
 
 ```rust
     tokens().update(deps.storage, &msg.token_id, |old| match old {
@@ -394,13 +394,13 @@ The `TokenInfo` data will originally be stored by `token_id` (which is a string 
     })?;
 ```
 
-(Incidentally, this is using `update` instead of `save`, to avoid overwriting an already existing token).
+(참고로 이것은 이미 존재하는 토큰을 덮어쓰는 것을 피하기 위해 `save` 대신 `update` 를 사용하고 있습니다.)
 
-Given that `token_id` is a string value, we specify `String` as the last argument of the `MultiIndex` definition. That way, the deserialization of the primary key will be done to the right type (an owned string).
+`token_id` 가 문자열 값인 경우 `MultiIndex` 정의의 마지막 인수로 `String` 을 지정합니다. 그렇게 하면 기본 키의 역직렬화가 올바른 유형(소유된 문자열)으로 수행됩니다.
 
 그런 다음 이 `TokenInfo` 데이터는 토큰 `owner` ( `Addr` )에 의해 인덱싱됩니다. 그렇게되면 소유자가 보유한 모든 토큰을 나열할 수 있습니다. 이것이 `owner` 인덱스 키가 `Addr`인 이유입니다.
 
-Other important thing here is that the key (and its components, in the case of a composite key) must implement the `PrimaryKey` trait. You can see that `Addr` do implement `PrimaryKey`:
+여기서 다른 중요한 점은 키(및 복합 키의 경우 해당 구성 요소)가 `PrimaryKey` 특성을 구현해야 한다는 것입니다. `Addr` 이 `PrimaryKey` 를 구현하는 것을 볼 수 있습니다.
 
 ```rust
 impl<'a> PrimaryKey<'a> for Addr {
@@ -418,7 +418,7 @@ impl<'a> PrimaryKey<'a> for Addr {
 
 ---
 
-We can now see how it all works, taking a look at the remaining code:
+이제 나머지 코드를 살펴보고 모든 것이 어떻게 작동하는지 확인할 수 있습니다.
 
 ```rust
 impl<'a> IndexList<TokenInfo> for TokenIndexes<'a> {
@@ -446,7 +446,7 @@ pub fn tokens<'a>() -> IndexedMap<'a, &'a str, TokenInfo, TokenIndexes<'a>> {
 
 여기서 `tokens()` 는 `IndexedMap` 구성을 단순화하는 도우미 함수입니다. 먼저 인덱스(들)가 생성되고, 그 다음 `IndexedMap` 이 생성되어 리턴됩니다.
 
-During index creation, we must supply an index function per index
+인덱스를 생성하는 동안 인덱스별로 인덱스 함수를 제공해야 합니다.
 
 ```rust
         owner: MultiIndex::new(|d: &TokenInfo| d.owner.clone(),
@@ -462,7 +462,7 @@ During index creation, we must supply an index function per index
     IndexedMap::new("tokens", indexes)
 ```
 
-Here of course, the namespace of the pk must match the one used during index(es) creation. And, we pass our `TokenIndexes` (as an `IndexList`-type parameter) as second argument. Connecting in this way the underlying `Map` for the pk, with the defined indexes.
+물론 여기서 pk의 네임스페이스는 인덱스 생성 중에 사용된 네임스페이스와 일치해야 합니다. 그리고 두 번째 인수로 `TokenIndexes` ( `IndexList` 유형 매개변수로)를 전달합니다. 이러한 방식으로 정의된 인덱스를 사용하여 pk에 대한 기본 `Map` 을 연결합니다.
 
 따라서 `IndexedMap` (및 다른 `Indexed*` 유형)은 원래의 `Map` 데이터에 대한 인덱스를 생성하기 위해 여러 인덱스 함수와 네임스페이스를 제공하는 `Map`의 래퍼(wrapper)/확장(extension)입니다. 또한 값 저장/업데이트/제거 중에 이러한 인덱스 함수 호출을 구현하므로, 이런 과정을 신경쓰지 않고 인덱싱된 데이터만 사용하면 됩니다.
 
@@ -470,7 +470,7 @@ Here of course, the namespace of the pk must match the one used during index(es)
 
 `owner` 가 매개변수로 전달된 `String` 값이고 `start_after` 및 `limit` 이 선택적으로 페이지 매김(pagination) 범위를 정의하는 사용 예:
 
-Notice this uses `prefix()`, explained above in the `Map` section.
+이것은 위의 `Map` 섹션에서 설명한 `prefix()` 를 사용합니다.
 
 ```rust
     let limit = limit.unwrap_or(DEFAULT_LIMIT).min(MAX_LIMIT) as usize;
@@ -489,7 +489,7 @@ Notice this uses `prefix()`, explained above in the `Map` section.
 
 이제 `tokens` 에는 주어진 `owner` 에 대한 `(token_id, TokenInfo)` 쌍이 포함됩니다. pk 값은 `prefix` + `range` 의 경우 `Vec<u8>` 이지만, `prefix_de` + `range_de` 를 사용하여 적절한 유형으로 역직렬화됩니다. (선택 사항) pk 역직렬화 유형(이 경우 `String`)이 `MultiIndex` 정의에 지정된 경우를 생각하시면 됩니다(아래 #Index 키 역직렬화 참조).
 
-Another example that is similar, but returning only the `token_id`s, using the `keys()` method:
+유사하지만 `keys()` 메서드를 사용하여 `token_id` 만 반환하는 또 다른 예:
 
 ```rust
     let pks: Vec<_> = tokens()
@@ -506,7 +506,7 @@ Another example that is similar, but returning only the `token_id`s, using the `
         .collect();
 ```
 
-Now `pks` contains `token_id` values (as raw `Vec<u8>`s) for the given `owner`. Again, by using `prefix_de` + `range_de`, a deserialized key can be obtained instead, as detailed in the next section.
+이제 `pks` 에는 주어진 `owner` 에 대한 `token_id` 값(원시 `Vec<u8>` 으로)이 포함됩니다. 다시, 다음 섹션에서 자세히 설명하는 것처럼, `prefix_de` + `range_de` 를 사용하여 역직렬화된 키를 대신 얻을 수 있습니다.
 
 ### 인덱스 키 역직렬화(index keys deserialization)
 
