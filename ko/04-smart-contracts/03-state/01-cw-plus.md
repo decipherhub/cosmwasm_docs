@@ -4,9 +4,9 @@ sidebar_position: '1'
 
 # cw-storage-plus
 
-:::info Enhanced Storage Engines for CosmWasm :::
+:::정보 CosmWasm을 위한 향상된 스토리지 엔진 :::
 
-**Notice**
+**알림**
 
 여러 운영레벨 품질의 컨트랙트에서 많이 사용되고 개선되었습니다. 계획된 API 중단이 하나 있었지만, 코드는 안정적이고 강력합니다. 자유롭게 여러분의 컨트랙트에서 사용하십시오.
 
