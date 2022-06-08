@@ -55,7 +55,7 @@ CosmWasm을 테스트해보는 가장 간단한 방법은 바로 `wasmd` 를 실
 
 두 경우 모두 가장 좋은 방법은 최신 릴리스의 `x/wasm` 모듈을 애플리케이션으로 복사하는 것입니다. 여기서 우리의 목표는 복사한 모듈에서 **최소한의 변경**만 하고 오히려 별도의 모듈에서 사용자 정의를 추가하는 것입니다. 이는 향후 모든 `wasmd` 릴리스에서 업스트림에서 `x/wasm` 을 복사하고 사용자 정의 기능을 추가해야 하기 때문에 가능한 간단해야 합니다.
 
-예를 들어 표준 SDK 라이브러리를 포크한 경우 imports를 변경하기만 하면 됩니다(예: `github.com/cosmos/cosmos-sdk/x/bank` 에서 `github.com/YOUR/APP/x/bank` 로). 그리고 다른 API로 인해 컴파일러 오류가 있는 경우 호출을 수정합니다(혹시 통화에 Int가 아닌 Decimals를 사용할 수도 있습니까?).
+예를 들어 표준 SDK 라이브러리를 포크한 경우 imports를 변경하기만 하면 됩니다(예: `github.com/cosmos/cosmos-sdk/x/bank` 에서 `github.com/YOUR/APP/x/bank` 로). 그리고 다른 API로 인해 컴파일러 오류가 있는 경우 호출을 수정합니다(통화에 Int가 아닌 Decimals를 사용한 경우).
 
 이 작업이 끝나면 모든 사용자 지정 논리와 함께 응용 프로그램에서 표준 CosmWasm 계약을 실행할 수 있어야 합니다.
 
