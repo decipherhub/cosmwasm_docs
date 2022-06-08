@@ -87,7 +87,7 @@ CosmWasm을 테스트해보는 가장 간단한 방법은 바로 `wasmd` 를 실
 
 설명하기 전에 주의사항으로, `x/wasm`을 복사했다면, <strong data-md-type="double_emphasis">아래 변경을 `x/wasm`에 적용하면 안됩니다</strong> .
 
-먼저 예를 들어서 새 모듈을 추가합니다. `x/contracts`, 이 모듈에는 CosmWasm 컨트랙트와 기본 모듈 간의 사용자 지정 바인딩이 포함됩니다. 그리고 사용할 수 있는 두 개의 진입점이 있습니다. 첫 번째는 사용자 정의 쿼리를 처리할 수 있는 [`CustomQuerier`](https://github.com/CosmWasm/wasmd/blob/v0.8.0-rc1/x/wasm/internal/keeper/query_plugins.go#L35) 입니다. 두 번째는 [`CustomEncoder`](https://github.com/CosmWasm/wasmd/blob/v0.8.0-rc1/x/wasm/internal/keeper/handler_plugin.go#L30)로서 `CosmosMsg::Custom(YourMessage)` 유형을 `[]sdk.Msg` 로 변환할 수 있습니다.
+새 모듈을 추가할 때, 예를 들어 `x/contracts`을 보면, 이 모듈에는 CosmWasm 컨트랙트와 당신의 네이티브 모듈 간의 사용자 지정 바인딩이 포함됩니다. 그리고 사용할 수 있는 두 개의 진입점이 있습니다. 첫 번째는 사용자 정의 쿼리를 처리할 수 있는 [`CustomQuerier`](https://github.com/CosmWasm/wasmd/blob/v0.8.0-rc1/x/wasm/internal/keeper/query_plugins.go#L35) 입니다. 두 번째는 [`CustomEncoder`](https://github.com/CosmWasm/wasmd/blob/v0.8.0-rc1/x/wasm/internal/keeper/handler_plugin.go#L30)로서 `CosmosMsg::Custom(YourMessage)` 타입을 `[]sdk.Msg` 로 변환할 수 있습니다.
 
 이들에 대한 스텁을 작성하는 것은 꽤 간단합니다. `reflect_test.go` 파일을 보면 동작하는 것을 볼 수 있습니다. 특히 여기에서는 [`CustomQuerier` 를 정의](https://github.com/CosmWasm/wasmd/blob/v0.8.0-rc1/x/wasm/internal/keeper/reflect_test.go#L355-L385) 하고 여기에서는 [`CustomHandler` 를 정의합니다](https://github.com/CosmWasm/wasmd/blob/v0.8.0-rc1/x/wasm/internal/keeper/reflect_test.go#L303-L353) . 이 코드는 Rust의 사용자 정의 유형에서 직렬화된 raw 바이트에서 `json.RawMessage` 를 가져와 Go 구조체로 구문 분석합니다. 그런 다음 이러한 go 구조체를 가져와서 사용자 지정 SDK 모듈에 맞게 적절하게 변환합니다.
 
