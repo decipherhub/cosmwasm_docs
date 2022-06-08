@@ -43,7 +43,7 @@ CosmWasm을 테스트해보는 가장 간단한 방법은 바로 `wasmd` 를 실
 
 ### 외부 모듈로서 통합
 
-`wasmd` 를 사용하는 가장 간단한 방법은 `x/wasm` 을 가져와서 `app.go` 에 연결하는 것입니다. 이렇게 하면 전체 모듈과 같이 실행되는 사용자 지정 모듈에 액세스할 수 있습니다. (현재는 CosmWasm 컨트랙트는 `bank` 및 `staking` 에만 액세스할 수 있습니다... 아래에서 [사용자 정의](#Adding-Custom-Hooks) 에 대해 자세히 설명합니다.)
+`wasmd` 를 사용하는 가장 간단한 방법은 `x/wasm` 을 가져와서 `app.go` 에 연결하는 것입니다. 이렇게 하면 전체 모듈과 같이 실행되는 사용자 지정 모듈에 접근할 수 있습니다. (현재는 CosmWasm 컨트랙트는 `bank` 및 `staking` 에만 접근할 수 있습니다... 아래에서 [사용자 정의](#Adding-Custom-Hooks) 에 대해 자세히 설명합니다.)
 
 이를 위한 요구 사항은 Cosmos SDK에서 표준 SDK 모듈을 가져와서 `app.go` 에서 활성화해야 한다는 것입니다. 이 방법은 [`wasmd/app/app.go`](https://github.com/CosmWasm/wasmd/blob/master/app/app.go#) 에서 확인할 수 있습니다( `wasm` 이 있는 줄만 검색하면 됩니다).
 
