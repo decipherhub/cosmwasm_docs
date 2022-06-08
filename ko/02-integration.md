@@ -67,7 +67,7 @@ CosmWasm을 테스트해보는 가장 간단한 방법은 바로 `wasmd` 를 실
 
 ### 네이티브 코드에서 컨트랙트 호출
 
-아마도 이 부분이 가장 쉬울 것입니다. 기본 교환(exchange) 모듈이 CosmWasm 모듈로 작동하는 토큰을 호출하려고 한다고 가정해 보겠습니다. `wasm.Keeper` 를 `exchange.Keeper` 에 전달해야 합니다. 메시지를 보내는 형식을 알고 있고 계약을 쿼리하는 형식(각 계약에서 json 스키마로 내보냄)을 알고 있으며, 지원되는 토큰 컨트랙트 주소들을 구성하는 방법이 있는 경우 교환 코드는 적절한 형식의 메시지와 함께 간단히 `wasm.Keeper.Execute` 를 호출할 수 있습니다. 또는 자금을 이동하거나 `wasm.Keeper.SmartQuery` 를 사용하여 잔액을 확인할 수 있습니다.
+아마도 이 부분이 가장 쉬울 것입니다. 기본 교환(exchange) 모듈이 CosmWasm 모듈로 작동하는 토큰을 호출하려고 한다고 가정해 보겠습니다. `wasm.Keeper` 를 `exchange.Keeper` 에 전달해야 합니다. 메시지를 보내는 형식을 알고 있고 컨트랙트를 쿼리하는 형식(각 컨트랙트에서 json 스키마로 내보냄)을 알고 있으며, 지원되는 토큰 컨트랙트 주소들을 구성하는 방법이 있는 경우 교환 코드는 자금을 이동시키기 위해 적절한 형식의 메시지와 함께 간단히 `wasm.Keeper.Execute` 를 호출하거나 `wasm.Keeper.SmartQuery` 를 사용하여 잔액을 확인할 수 있습니다.
 
 [`x/wasm/keeper`](https://github.com/CosmWasm/wasmd/tree/master/x/wasm/keeper) 의 단위 테스트를 보면 꽤 간단합니다.
 
