@@ -99,4 +99,4 @@ CosmWasm을 테스트해보는 가장 간단한 방법은 바로 `wasmd` 를 실
 
 테스트 케이스의 경우 사용자 정의 이름을 포함하도록 확인하는 [지원기능을 정의](https://github.com/CosmWasm/wasmd/blob/ade03a1d39a9b8882e9a1ce80572d39d57bb9bc3/x/wasm/internal/keeper/reflect_test.go#L52) 해야 합니다(위의 `requires_XYZ`를 의미). 그런 다음 `TestInput` 을 생성할 때 [사용자 지정 인코더와 쿼리자를 전달할](https://github.com/CosmWasm/wasmd/blob/ade03a1d39a9b8882e9a1ce80572d39d57bb9bc3/x/wasm/internal/keeper/reflect_test.go#L52) 수 있습니다. 컴파일된 컨트랙트로 몇 가지 테스트를 실행하고 대부분의 인터페이스를 이상적으로 실행하여 컨트랙트와 SDK 간의 모든 파싱이 제대로 구현되었는지 확인해야합니다.
 
-테스트하고 결과에 만족하면 `app.go` 에 연결할 수 있습니다. 적절한 <code>supportedFeatures</code> 기능을 갖도록 <a>기본 `NewKeeper` 생성자를 편집하고</a> NewKeeper에 대한 마지막 두 인수로 `CustomEncoder` 및 `CustomQuerier` 를 전달하기 `NewKeeper` 됩니다. 이제 체인을 컴파일하고 사용자 정의 컨트랙트를 업로드할 수 있습니다.
+테스트하고 결과에 만족하면 `app.go` 에 연결할 수 있습니다. 적절한 <code>supportedFeatures</code> 기능을 갖도록 <a>기본 `NewKeeper` 생성자를 편집하고</a> 'NewKeeper'에 대한 마지막 두 인자로 `CustomEncoder` 및 `CustomQuerier` 를 전달해야 합니다. 이제 체인을 컴파일하고 사용자 정의 컨트랙트를 업로드할 수 있습니다.
