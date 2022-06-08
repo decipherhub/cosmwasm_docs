@@ -31,7 +31,7 @@ v0.7 | v0.38.3
 
 현재는 Intel/AMD64 CPU와 OSX 또는 Linux만 지원합니다. Linux의 경우 표준 빌드 명령은 `glibc` 시스템(Ubuntu, Debian, CentOS 등)에서 작동합니다. 알파인과 같은 `muslc` 기반 시스템용으로 컴파일하려면 정적 라이브러리 wasmvm을 로컬에서 컴파일하고 `muslc` 빌드 태그와 함께 go를 컴파일해야 합니다. 아니면 알파인 시스템에서 정적 이동 바이너리를 빌드하는 [Dockerfile](./Dockerfile) 을 사용해야 합니다.
 
-이 제한은 [`wasmvm`](https://github.com/CosmWasm/wasmvm)에서 wasm 코드를 실행하는 데 사용하는 Rust dll에서 비롯됩니다. [ARM 지원](https://github.com/CosmWasm/wasmvm/issues/53) 추가 및 [Windows 지원](https://github.com/CosmWasm/wasmvm/issues/28) 추가에 대한 미해결 문제가 있습니다. 그러나 이러한 문제는 로드맵에서 직접 하고자 하지 않는다면 우선순위가 높지 않으므로 지금은 현재 제한 사항을 고려해야 합니다.
+이 제한은 [`wasmvm`](https://github.com/CosmWasm/wasmvm)에서 wasm 코드를 실행하는 데 사용하는 Rust dll에서 비롯됩니다. [ARM 지원](https://github.com/CosmWasm/wasmvm/issues/53) 추가 및 [Windows 지원](https://github.com/CosmWasm/wasmvm/issues/28) 추가에 대한 미해결 문제가 있습니다. 그러나 이러한 문제는 직접 해결하지 않는다면 로드맵에서 우선순위가 높지 않으므로 현재는 제한 사항을 고려해야 합니다.
 
 ## 빠른 시작
 
