@@ -77,7 +77,7 @@ CosmWasm을 테스트해보는 가장 간단한 방법은 바로 `wasmd` 를 실
 
 이러한 바인딩은 [많은 API를 사용하는 간단한 접점](https://github.com/CosmWasm/terra-contracts/tree/master/contracts/maker)을 만드는데 사용합니다. 세부 사항에 대해 너무 걱정하지 않아도 됩니다. 쓸모 있긴 하지만, 주로 체인에 업로드하고 네이티브 Cosmos SDK 모듈과의 통합 테스트에 사용될 것입니다. 일단 간단한 기능들이 완성되면 점점 더 복잡한 컨트랙트를 추가하면 좋습니다.
 
- 컨트랙트를 단위 테스트할 때 네이티브 모듈의 기능에 대한 모의 객체를 제공할 수 있도록 `mocks` 패키지를 추가하고 싶을 것입니다(예를 들면 컨트랙트가 쿼리할 때 변환 비율에 대한 정적 데이터 제공). [Terra 계약에 대한 모의 객체(mocks)](https://github.com/CosmWasm/terra-contracts/tree/master/packages/mocks) 예제를 볼 수 있습니다.
+ 컨트랙트를 단위 테스트할 때 네이티브 모듈의 기능에 대한 모의 객체를 제공할 수 있도록 `mocks` 패키지를 추가하고 싶을 수 있습니다(예를 들면 컨트랙트가 쿼리할 때 변환 비율에 대한 정적 데이터 제공). [Terra 계약에 대한 모의 객체(mocks)](https://github.com/CosmWasm/terra-contracts/tree/master/packages/mocks) 예제를 볼 수 있습니다.
 
 이 세 단계가 제공하는 것은 기본적으로 CosmWasm 컨트랙트 SDK에 대한 체인에 특화된 확장입니다. 모든 CosmWasm 컨트랙트 라이브러리(바인딩 및 모의 객체)를 가져올 수 있으며 표준 CosmWasm 인터페이스를 사용하는 것처럼 쉽게 사용자 지정 체인에 특화된 확장을 쉽게 사용할 수 있습니다. 남은 것은 실제로 원하는 대로 동작하도록 체인에 연결하는 것입니다.
 
