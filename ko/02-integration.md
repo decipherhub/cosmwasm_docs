@@ -57,7 +57,7 @@ CosmWasm을 테스트해보는 가장 간단한 방법은 바로 `wasmd` 를 실
 
 예를 들어 표준 SDK 라이브러리를 포크한 경우 imports를 변경하기만 하면 됩니다(예: `github.com/cosmos/cosmos-sdk/x/bank` 에서 `github.com/YOUR/APP/x/bank` 로). 그리고 다른 API로 인해 컴파일러 오류가 있는 경우 호출을 수정합니다(통화에 Int가 아닌 Decimals를 사용한 경우).
 
-이 작업이 끝나면 모든 사용자 지정 논리와 함께 응용 프로그램에서 표준 CosmWasm 계약을 실행할 수 있어야 합니다.
+이 작업이 끝나면 모든 사용자 지정 논리와 함께 응용 프로그램에서 표준 CosmWasm 컨트랙트를 실행할 수 있어야 합니다.
 
 ## 사용자 정의 훅 추가
 
