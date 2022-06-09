@@ -116,7 +116,7 @@ cat ./artifacts/checksums.txt | grep cw20_base.wasm
 diff  <(echo "46bd624fff7f11967aac6ddaecf29201d1897be5216335ccddb659be5b524c52" ) <(echo "46bd624fff7f11967aac6ddaecf29201d1897be5216335ccddb659be5b524c52")
 ```
 
-해시값이 동일한 것을 확인했으니 컨트랙트 verify가 끝이 났습니다.
+해시값이 동일한 것을 확인했으니 컨트랙트 검증이 완료되었습니다.
 
 ## 결론
 
