@@ -27,7 +27,7 @@ enum Result<T, E> {
 
 ## Result
 
-`Result` 는 enum 타입이고, `Result<T, E>`에서 <br> `T` 와 `E` 는 둘 다 성공과 실패를 나타내는 generics 입니다. 이를 다음과 같이 부릅니다.
+`Result` 는 열거형 타입이고, `Result<T, E>`에서 <br> `T` 와 `E` 는 둘 다 성공과 실패를 나타내는 제네릭 입니다. 이를 다음과 같이 부릅니다.
 
 - `Ok(T)` - `T` 를 포함하는 성공한 `Result` 컨테이너
 - `Err(E)` - `E` 를 포함하는 실패한 `Result` 컨테이너
