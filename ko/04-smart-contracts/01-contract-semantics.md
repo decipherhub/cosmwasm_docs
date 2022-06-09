@@ -161,7 +161,7 @@ pub struct SubcallResponse {
 
 `reply` 호출은 `Err` 자체를 리턴할 수 있으며, 이 경우 호출자가 오류가 발생한 것처럼 처리되고 트랜잭션이 중단됩니다. 그러나 성공적으로 처리되면 `reply`은 정상적인 `Response`를 리턴할 수 있으며 이는 EventManager에 추가된 이벤트와 위에서 설명한 대로 전달된 모든 `messages` 및 `submessages` 메시지와 같이 정상으로 처리됩니다.
 
-<code>reply</code>와의 한 가지 <em>중요한 차이점</em> 은 *데이터를 삭제하지 않는다는* 것입니다. `reply`가 `Response` 객체의 `data: Some(value)`를 리턴하면, 호출자가 리턴한 `data` 필드를 덮어씁니다. 즉, `execute`가 `data: Some(b"first thought")`를 리턴하고 `reply`(모든 추가 정보와 함께)가 `data: Some(b"better idea")`를 리턴하면 이는 `execute`의 호출자(클라이언트나 다른 트랜잭션)에게 리턴됩니다. 마치 원래 `execute` 및 리턴된 `data: Some(b"better idea")`가 리턴되는 것과 같습니다. 만약`reply`이 `data: None`를 리턴하면 이전에 설정된 데이터 상태를 수정하지 않습니다. 이 설정을 모두 설정하는 여러 서브메시지가 있는 경우 마지막 메시지만 사용됩니다(모두 이전 `data` 값을 덮어씁니다). 결과적으로 `data: Some(b"")` 을 사용하여 이전에 설정한 데이터를 지울 수 있습니다. 이것은 `null` 대신 JSON 문자열로 표시되고 다른 `Some` 값으로 처리됩니다.
+<code>reply</code>와의 한 가지 <em>중요한 차이점</em> 은 *데이터를 삭제하지 않는다는* 것입니다. `reply`가 `Response` 객체의 `data: Some(value)`를 리턴하면, 호출자가 리턴한 `data` 필드를 덮어씁니다. 즉, `execute`가 `data: Some(b"first thought")`를 리턴하고 `reply`(모든 추가 정보와 함께)가 `data: Some(b"better idea")`를 리턴하면 이는 `execute`의 호출자(클라이언트나 다른 트랜잭션)에게 리턴됩니다. 마치 원래 `execute` 및 리턴된 `data: Some(b"better idea")`가 리턴되는 것과 같습니다. 만약 `reply`가 `data: None`를 리턴하면 이전에 설정된 데이터 상태를 수정하지 않습니다. 이 설정을 모두 설정하는 여러 서브메시지가 있는 경우 마지막 메시지만 사용됩니다(모두 이전 `data` 값을 덮어씁니다). 결과적으로 `data: Some(b"")` 을 사용하여 이전에 설정한 데이터를 지울 수 있습니다. 이것은 `null` 대신 JSON 문자열로 표시되고 다른 `Some` 값으로 처리됩니다.
 
 #### 오더와 롤백(Order and Rollback)
 
