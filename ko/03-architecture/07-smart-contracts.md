@@ -66,7 +66,7 @@ CosmWasm에는 위임 호출(Delegate Call)이 없습니다. 모듈로부터 가
 
 ### :heavy_check_mark: [외부 컨트랙트 참조](https://github.com/sigp/solidity-security-blog#contract-reference) {#heavy_check_mark-external-contract-referencing}
 
-**예정된 완화**
+**계획된 완화**
 
 주어진 `HandleMsg`로 컨트랙트를 호출한다면, 컨트랙트에 지정된 API가 있어야 할 뿐, 코드는 아무것도 요구사항이 없습니다. 따라서 제가 원하는 컨트랙트와 같은 API(또는 API의 모집합)를 가진 악의적인 코드를 올리고, 당신에게 호출을 요청할 수 있습니다 - 직접 혹은 컨트랙트에서 호출하는 두 가지 모두. 이는 자금을 훔치는 데 사용될 수 있고 실제로  [튜토리얼에서 이것을 시연했습니다](/tutorials/hijack-escrow/hack-contract).
 
