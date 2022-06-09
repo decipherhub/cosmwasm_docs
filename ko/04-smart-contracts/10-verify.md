@@ -22,7 +22,7 @@ junod query wasm contract-state raw juno1unclk8rny4s8he4v2j826rattnc7qhmhwlv3wm9
 }
 ```
 
-위 query의 결과로 이 컨트랙트가 cw20-base 이며 `0.10.3` 버전임을 알 수 있습니다.
+위 쿼리의 결과로 이 컨트랙트가 cw20-base 이며 `0.10.3` 버전임을 알 수 있습니다.
 
 해시가 필요하므로 코드 ID가 필요합니다. 코드 ID를 확인할 수 있는 방법은 다음과 같습니다.
 
