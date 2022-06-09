@@ -12,7 +12,7 @@ sidebar_position: '10'
 
 살펴보고자 하는 컨트랙트의 주소는`juno1unclk8rny4s8he4v2j826rattnc7qhmhwlv3wm9qlc2gamhad0usxl7jnd` 이며 juno uni testing 네트워크에 존재합니다.
 
-[CW2 Spec](cw-plus/cw2/spec)은 상태로 저장될 컨트랙트의 정보를 결정합니다. 컨트랙트의 정보는 아래의 커맨드를 통해 query할 수 있습니다.
+[CW2 Spec](cw-plus/cw2/spec)은 상태로 저장될 컨트랙트의 정보를 결정합니다. 컨트랙트의 정보는 아래의 커맨드를 통해 쿼리할 수 있습니다.
 
 ```shell
 junod query wasm contract-state raw juno1unclk8rny4s8he4v2j826rattnc7qhmhwlv3wm9qlc2gamhad0usxl7jnd 636F6E74726163745F696E666F --node $RPC --output json | jq  -r .data | base64 -d | jq
