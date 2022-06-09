@@ -22,7 +22,7 @@ Cosmos SDK `BaseApp` 은 고립된(isolated) 컨텍스트에서 각 트랜잭션
 
 트랜잭션은 여러 메시지로 구성될 수 있으며 각 메시지는 동일한 컨텍스트와 동일한 가스 한도에서 차례로 실행됩니다. 모든 메시지가 성공하면 컨텍스트는 블록체인 상태로 커밋되고 모든 메시지의 결과는 `TxResult` 에 저장됩니다. 하나의 메시지가 실패하면 이후의 모든 메시지를 건너뛰고 모든 상태 변경 사항을 되돌립니다. 이러한 원자성(Atomicity)은 매우 중요합니다. 이것은 Alice와 Bob이 모두 2개의 메시지로 트랜잭션에 서명할 수 있음을 의미합니다. Alice는 Bob에게 1000 ATOM을 지불하고 Bob은 Alice에게 50 ETH를 지불했을때, Bob의 계정에 자금이 없으면 Alice의 지불도 되돌려집니다. 이것은 DB 트랜잭션이 일반적으로 작동하는 것과 같습니다.
 
-[`x/wasm`](https://github.com/CosmWasm/wasmd/tree/master/x/wasm) 은 특정 메시지를 처리하고 이를 사용하여 스마트 컨트랙트를 업로드, 인스턴스화, 실행하는 맞춤형 Cosmos SDK 모듈입니다. 특히, 적절하게 서명된 [`Keeper.Execute`](https://github.com/CosmWasm/wasmd/blob/v0.23.0/proto/cosmwasm/wasm/v1/tx.proto#L73-L86) 를 인정하고 [`MsgExecuteContract`](https://github.com/CosmWasm/wasmd/blob/v0.23.0/x/wasm/keeper/keeper.go#L328-L369) 로 라우팅하여 적절한 스마트 컨트랙트를 로드하고 이에 대한 `execute` 을 호출합니다. 이 메소드는 성공(데이터 및 이벤트 포함) 또는 오류를 반환할 수 있습니다. 여기에 오류가 있는 경우 블록의 전체 트랜잭션을 되돌립니다. 이것은 우리의 컨트랙트가 `execute` 호출을 받을 때의 컨텍스트입니다.
+[`x/wasm`](https://github.com/CosmWasm/wasmd/tree/master/x/wasm) 은 특정 메시지를 처리하고 이를 사용하여 스마트 컨트랙트를 업로드, 인스턴스화, 실행하는 맞춤형 Cosmos SDK 모듈입니다. 특히, 적절리 서명된 [`Keeper.ExecuteContract`](https://github.com/CosmWasm/wasmd/blob/v0.23.0/proto/cosmwasm/wasm/v1/tx.proto#L73-L86) 를 받아 [`MsgExecute`](https://github.com/CosmWasm/wasmd/blob/v0.23.0/x/wasm/keeper/keeper.go#L328-L369) 로 라우팅하여 적절한 스마트 컨트랙트를 로드하고 이에 대한 `execute` 을 호출합니다. 이 메소드는 성공(데이터 및 이벤트 포함) 또는 오류를 반환할 수 있습니다. 여기에 오류가 있는 경우 블록의 전체 트랜잭션을 되돌립니다. 되돌려진 컨텍스트는 우리의 컨트랙트가 `execute` 호출을 받을 때의 컨텍스트입니다.
 
 ### 기본 실행(Basic Execution)
 
