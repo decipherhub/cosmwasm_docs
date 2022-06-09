@@ -169,7 +169,7 @@ pub struct SubcallResponse {
 
 서브메시지 `execution` 및 `reply` 은 다른 서브메시지의 컨텍스트 내에서 발생할 수 있다는 것을 기억하세요. 예를 들어, `contract-A--submessage --> contract-B--submessage --> contract-C`의 상황을 보겠습니다. 여기에서 `contract-B` 는 서브메시지 `reply`에서 `Err`을 리턴하여 `contract-C` 및 자체의 상태를 되돌릴 수 있지만, 컨트랙트 A 또는 전체 트랜잭션을 되돌릴 수는 없습니다. 단지 컨트랙트 A의 `reply` 기능으로 `Err`을 반환하는 것으로 끝납니다.
 
-오류는 `ReplyOn::Success` 로 처리되지 않는다는 것도 중요합니다. 즉, 이러한 경우 오류는 오류를 반환하는 일반 `message`처럼 처리됩니다. 이 도표가 이해에 도움이 될 수 있습니다. 컨트랙트가 (a) `ReplyOn::Success` 및 (b) `ReplyOn::Error`와 함께 두 개의 서브메시지를 반환했다고 상상해보십시오.
+오류는 `ReplyOn::Success` 로 처리되지 않는다는 것도 중요합니다. 즉, 이러한 경우 오류는 오류를 반환하는 일반 `message`처럼 처리됩니다. 이 도표가 이해에 도움이 될 수 있습니다. 컨트랙트가 (a) `ReplyOn::Success` 및 (b) `ReplyOn::Error`와 함께 두 개의 서브메시지를 반환했다고 상상해보세요.
 
 a) 처리결과 | b) 처리결과 | 호출 응답(reply called) | 응답을 덮어쓰는지(may overwrite result from reply) | 비고
 --- | --- | --- | --- | ---
