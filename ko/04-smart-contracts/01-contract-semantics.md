@@ -12,7 +12,7 @@ sidebar_position: '1'
 
 ### SDK 컨텍스트
 
-CosmWasm을 살펴보기 전에 [Cosmos SDK](https://v1.cosmos.network/sdk) 와 통합하는 블록체인 프레임워크에 의해 실행되는 시맨틱스(문서화가 다소 덜 되어있습니다)를 살펴봐야 합니다. [Tendermint BFT](https://tendermint.com/core/) Consensus Engine을 기반으로 합니다. CosmWasm을 도착하기 전(그리고 이후) 트랜잭션을 처리하는 방법을 먼저 살펴보겠습니다.
+CosmWasm을 살펴보기 전에 [Cosmos SDK](https://v1.cosmos.network/sdk) 와 통합하는 블록체인 프레임워크에 의해 실행되는 시맨틱스(문서화가 다소 덜 되어있습니다)를 살펴봐야 합니다. Cosmos SDK는 [Tendermint BFT](https://tendermint.com/core/) Consensus Engine을 기반으로 합니다. 트랜잭션이 CosmWasm에 도착하기 전(그리고 이후) 트랜잭션을 처리하는 방법을 먼저 살펴보겠습니다.
 
 먼저, Tendermint 엔진은 다음 블록에 포함될 트랜잭션 목록에 대한 2/3 이상의 합의를 찾습니다. 이것은 *트랜잭션들을 실행하지 않고* 이루어집니다. 최소한의 사전 필터링이 Cosmos SDK 모듈에 의해 이루어지는데, 유효한 형식의 트랜잭션인지, 충분한 가스비가 있는지, 충분한 비용을 지불할 수 있는 주소에 의해 서명이 되었는지 등을 확인합니다. 주의할 것은, 블록에 에러가 있는 트랜잭션들이 많이 포함되어 있을 수 있다는 것입니다.
 
