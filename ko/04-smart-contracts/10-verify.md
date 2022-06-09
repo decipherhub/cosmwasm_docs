@@ -42,7 +42,7 @@ junod query wasm contract juno1unclk8rny4s8he4v2j826rattnc7qhmhwlv3wm9qlc2gamhad
 }
 ```
 
-훌륭합니다. 위 query를 통해 code_id, creator address, admin 그리고 label 의 정보까지 알게 되었습니다.
+훌륭합니다. 위 쿼리를 통해 code_id, creator address, admin 그리고 label 의 정보까지 알게 되었습니다.
 
 위 정보들을 통해 실제로 입력할 코드는 다음과 같습니다.
 
