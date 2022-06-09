@@ -120,7 +120,7 @@ fn query_resolver(deps: Deps, _env: Env, name: String) -> StdResult<Binary> {
 
 Rust에는 대부분의 다른 주류 프로그래밍 언어와 달리 `nil` 또는`null` 이라는 개념이 없습니다. 대신 존재 또는 비존재의 개념을 container 타입으로 인코딩하는 `Option` 유형이 있습니다.
 
-`Option<T>` 는 두 가지 varinat 가 있는 enum 타입입니다.
+`Option<T>` 는 두 가지 varinat 가 있는 열거형 타입입니다.
 
 - `Some(<wrapped-value>)` - `Some` 은 `.unwrap()` 을 통해 접근할 수 있는 내부 값을 래핑합니다. 이것은 rust 코드 전체에서 일치하는 것 뿐만 아니라 이를 볼 수 있습니다.
 - `None` - `None`
