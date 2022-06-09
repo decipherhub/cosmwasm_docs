@@ -36,7 +36,7 @@ result 타입은 개념적으로 다른 함수형 언어에서의 `Either` 와 �
 
 그러나, `Result` 타입들이 entry points 와 핸들러에서만 사용되는 것은 아닙니다.
 
-예를 들어`execute` entry points 에서, 이들은 종종 enums 을 매치시키는 함수에 사용됩니다.
+예를 들어`execute` entry points 에서, 이들은 종종 열거형 을 매치시키는 함수에 사용됩니다.
 
 우리는 `execute` 가 입력된 CW20-base 에서 `Result<Response, ContractError>`를 볼 수 있습니다.    `ExecuteMsg::Transfer` 와 매치되는 첫 번째 브랜치에서 함수 호출을 살펴봅시다.
 
