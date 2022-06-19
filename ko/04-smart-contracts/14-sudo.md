@@ -68,7 +68,7 @@ pub fn contract_template() -> Box<dyn Contract<Empty>> {
 wasmd tx gov submit-proposal sudo-contract [contract_addr_bech32] [json_encoded_migration_args] [flags]
 ```
 
-`json_encoded_migration_args` 는 JSON으로 인코딩된 `SudoMsg` 를 허용합니다.
+`json_encoded_migration_args` 는 JSON으로 인코딩된 `SudoMsg` 를 받습니다.
 
 ```json
 {
