@@ -79,7 +79,7 @@ pub fn contract_stablecoin_exchanger() -> Box<dyn Contract<Empty>>{
 >
 > 컨트랙트 구성에 따라 ContractWrapper를 생성할 때 컨트랙트가 `reply` 기능을 구현하지 않으면 `with_reply` 가 필요하지 않을 수 있습니다.
 
-컨트랙트를 모킹한 후 다음 두 단계가 더 수행됩니다. 코드를 저장한 다음 코드 체에서 컨트랙트를 설정합니다. 이것은 테스트넷 또는 메인넷 체인에 배포하는 것과 동일한 프로세스입니다. 반면 단위 테스트에서는 mock_dependencies를 사용하고 `mock_dependencies` 를 전달하는 `mock_info` 로 작업합니다.
+컨트랙트를 모킹한 후 다음 두 단계가 더 수행됩니다. 코드를 저장한 다음 코드 오브젝트로부터 컨트랙트를 셋업합니다. 테스트넷 또는 메인넷 체인에 배포하는 것과 동일한 프로세스입니다. 반면 단위 테스트에서는 mock_dependencies를 사용하고 `mock_dependencies` 를 전달하는 `mock_info` 로 작업합니다.
 
 ### 컨트랙트 저장 및 인스턴스화:
 
