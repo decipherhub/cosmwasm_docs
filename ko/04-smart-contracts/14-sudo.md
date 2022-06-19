@@ -23,7 +23,7 @@ pub enum SudoMsg {
 }
 ```
 
-다음 진입점(entry_point):
+다음 진입점:
 
 ```rust
 #[entry_point]
