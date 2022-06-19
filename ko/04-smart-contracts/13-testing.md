@@ -31,7 +31,7 @@ use cosmwasm_std::testing::{mock_env, MockApi, MockQuerier, MockStorage, MOCK_CO
 use cw_multi_test::{App, BankKeeper, Contract, ContractWrapper};
 ```
 
-위의 imports는 테스트 제작을 할 수 있는 광범위한 도구를 제공합니다. 여기에서 살펴볼 첫 번째 imports는 테스트가 실행될 시뮬레이션 블록체인 환경이 될 `App` 입니다.
+위의 imports는 테스트 제작을 할 수 있는 많은 도구를 제공합니다. 여기에서 살펴볼 첫 번째 imports는 테스트가 실행될 시뮬레이션 블록체인 환경이 될 `App` 입니다.
 
 ### App
 
