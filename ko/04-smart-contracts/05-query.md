@@ -38,6 +38,6 @@ pub fn query(deps: Deps, env: Env, msg: QueryMsg) -> StdResult<Binary> {
 }
 ```
 
-여기서 `query_resolver` 는 다른 함수일 뿐이고,`config_read` 는 데이터 저장소에 대한 접근을 래핑하는 helper 입니다.
+여기서 `query_resolver` 는 다른 함수일 뿐이고,`config_read` 는 데이터 저장소에 대한 접근을 래핑하는 헬퍼 입니다.
 
 사용자 지정 쿼리는 [the query function](https://github.com/InterWasm/cw-contracts/blob/main/contracts/nameservice/src/contract.rs#L95) 을 통해 보여집니다.
