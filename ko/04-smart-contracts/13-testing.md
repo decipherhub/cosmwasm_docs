@@ -171,7 +171,7 @@ fn counter_contract_multi_test() {
         .unwrap();
     asserteq!(count_response.count, 1)
 
-    // Now lets reset the counter with the other ExecuteMsg
+    // 이제 다른 ExecuteMsg를 사용하여 카운터를 리셋해보자
     let msg = ExecuteMsg::Reset {}
     let _ = router.execute_contract(
             owner.clone(),
