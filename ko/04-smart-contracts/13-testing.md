@@ -73,7 +73,7 @@ pub fn contract_stablecoin_exchanger() -> Box<dyn Contract<Empty>>{
 }
 ```
 
-위의 예는 더 복잡한 예이지만 빠르게 보겠습니다. 런타임에 컨트랙트에서 사용하는 execute, , instantiate 및 reply 기능을 가져온 다음 테스트에 사용할 자체 래퍼를 만듭니다.
+위의 예는 더 복잡한 예이지만 빠르게 보겠습니다. 런타임에 컨트랙트에서 사용하는 execute, instantiate, query, reply 기능을 가져온 다음 테스트에 사용할 자체 래퍼를 만듭니다.
 
 > reply를 할 것인가 말 것인가?
 >
