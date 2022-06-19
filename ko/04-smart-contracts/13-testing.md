@@ -153,7 +153,7 @@ fn counter_contract_multi_test() {
         .instantiate_contract(counter_contract_code_id, owner.clone(), &init_msg, &[], "counter", None)
         .unwrap();
 
-    // We can now start executing actions on the contract and querying it as needed
+    // 컨트랙트의 액션을 실행하고, 필요하면 쿼리하기
     let msg = ExecuteMsg::Increment {}
     // Increment the counter by executing the above prepared msg on the previously setup contract
     let _ = router.execute_contract(
