@@ -139,7 +139,7 @@ pub fn counter_instantiate_msg(count: Uint128) -> InstantiateMsg {
 
 #[test]
 fn counter_contract_multi_test() {
-    // Create the owner account
+    // 소유자 계정 생성하기
     let owner = Addr::unchecked("owner");
     let mut router = mock_app();
 
