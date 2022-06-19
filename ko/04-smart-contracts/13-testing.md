@@ -144,7 +144,7 @@ fn counter_contract_multi_test() {
     let mut router = mock_app();
 
     let counter_contract_code_id = router.store_code(contract_counter());
-    // Setup the counter contract with an initial count of zero
+    // 초기값이 0을 갖도록 카운터 컨트랙트 셋업
     let init_msg = InstantiateMsg {
         count: Uint128::zero()
     }
