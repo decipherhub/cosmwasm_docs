@@ -155,7 +155,7 @@ fn counter_contract_multi_test() {
 
     // 컨트랙트의 액션을 실행하고, 필요하면 쿼리하기
     let msg = ExecuteMsg::Increment {}
-    // Increment the counter by executing the above prepared msg on the previously setup contract
+    // 이전에 셋업한 컨트랙트에서 위에 준비된 메세지를 실행함으로써 카운터를 증가시키기
     let _ = router.execute_contract(
             owner.clone(),
             mocked_contract_addr.clone(),
