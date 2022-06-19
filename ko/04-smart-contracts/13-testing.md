@@ -148,7 +148,7 @@ fn counter_contract_multi_test() {
     let init_msg = InstantiateMsg {
         count: Uint128::zero()
     }
-    // Instantiate the counter contract using its newly stored code id
+    // 새로 저장된 code id를 이용해서 카운터 컨트랙트 인스턴스화
     let mocked_contract_addr = router
         .instantiate_contract(counter_contract_code_id, owner.clone(), &init_msg, &[], "counter", None)
         .unwrap();
