@@ -182,7 +182,7 @@ fn counter_contract_multi_test() {
         .unwrap();
 
     // 그리고 다시 가능한 컨트랙트 쿼리를 사용해서 결과를 검증하기
-    // Query the contract to verify the counter was incremented
+    // 즉, 컨트랙트를 쿼리해서 카운터가 증가햇는지 검증하기
     let config_msg =  QueryMsg::Count{};
     let count_response: CountResponse = router
         .wrap()
