@@ -510,4 +510,4 @@ pub fn tokens<'a>() -> IndexedMap<'a, &'a str, TokenInfo, TokenIndexes<'a>> {
 
 ### 인덱스 키 역직렬화(index keys deserialization)
 
-`UniqueIndex` 및 `MultiIndex` 의 경우 기본 키를 역직렬화하려면 기본 키( `PK` ) 유형을 지정해야 합니다. 이 일반 유형은 기본 키에 대해 역직렬화/데이터가 제공되지 않음을 의미하는 `()` 기본값과 함께 제공됩니다. 이것은 현재 `UniqueIndex` / `MultiIndex` 구현(impls)을 위한 하위 호환성을 위한 것입니다. 또한 기본 키가 필요하지 않고 역직렬화된 값에만 관심이 있는 경우에 유용할 수 있습니다.
+`UniqueIndex` 및 `MultiIndex` 의 경우 기본 키를 역직렬화하려면 기본 키( `PK` ) 타입을 지정해야 합니다. 이 제네릭 타입은 기본 키에 대해 역직렬화/데이터가 제공되지 않음을 의미하는 `()` 기본값과 함께 제공됩니다. 이는 현재 `UniqueIndex` / `MultiIndex` 구현(impls)을 위한 하위 호환성을 위한 것입니다. 또한 기본 키가 필요하지 않고 역직렬화된 값에만 관심이 있는 경우에 유용할 수 있습니다.
