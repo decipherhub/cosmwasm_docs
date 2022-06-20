@@ -17,7 +17,7 @@ sidebar_position: '6'
 
 ## 메시지 {#messages}
 
-`init`과 `handle`은 임의의 수의 [`CosmosMsg`](https://github.com/CosmWasm/cosmwasm/blob/08717b4c589bbfe59f44bb8cccffb08f63696413/packages/std/src/init_handle.rs#L11-L31) 개체를 반환할 수 있고, 이 개체들은 같은 트랜잭션에서 재전송이 될 수 있습니다(이를 통해 컨트랙트 실행과 함께 원자적 성공/롤백 제공합니다). 메시지에는 3가지 클래스가 있습니다.
+`init`과 `handle`은 임의 개수의 [`CosmosMsg`](https://github.com/CosmWasm/cosmwasm/blob/08717b4c589bbfe59f44bb8cccffb08f63696413/packages/std/src/init_handle.rs#L11-L31) 개체를 반환할 수 있고, 이 개체들은 같은 트랜잭션에서 재전송이 될 수 있습니다(이를 통해 컨트랙트 실행과 함께 원자적 성공/롤백 제공합니다). 메시지에는 3가지 클래스가 있습니다.
 
 - `Contract` - 주어진 메시지(직렬화된 형식으로 제공됨)와 함께 주어진 컨트랙트 주소를 호출합니다. 호출자가 API 형식에 액세스할 수 있다고 가정합니다.
 - [모듈 인터페이스](#modules) - *이식 가능한* 인터페이스로 네이티브 모듈을 노출하기 위해 모든 체인에서 지원할 수 있는 표준화된 인터페이스입니다.
