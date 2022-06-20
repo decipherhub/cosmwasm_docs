@@ -506,7 +506,7 @@ pub fn tokens<'a>() -> IndexedMap<'a, &'a str, TokenInfo, TokenIndexes<'a>> {
         .collect();
 ```
 
-이제 `pks` 에는 주어진 `owner` 에 대한 `token_id` 값(원시 `Vec<u8>` 으로)이 포함됩니다. 다시, 다음 섹션에서 자세히 설명하는 것처럼, `prefix_de` + `range_de` 를 사용하여 역직렬화된 키를 대신 얻을 수 있습니다.
+이제 `pks` 에는 주어진 `owner` 에 대한 `token_id` 값들(원시 `Vec<u8>` 으로)이 포함됩니다. 다시, `prefix_de` + `range_de` 를 사용하여 역직렬화된 키를 대신 얻을 수 있습니다. 이는 다음 섹션에서 자세히 설명합니다.
 
 ### 인덱스 키 역직렬화(index keys deserialization)
 
