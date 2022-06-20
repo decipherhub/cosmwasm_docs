@@ -489,7 +489,7 @@ pub fn tokens<'a>() -> IndexedMap<'a, &'a str, TokenInfo, TokenIndexes<'a>> {
 
 이제 `tokens` 에는 주어진 `owner` 에 대한 `(token_id, TokenInfo)` 쌍이 포함됩니다. pk 값은 `prefix` + `range` 의 경우 `Vec<u8>` 이지만, `prefix_de` + `range_de` 를 사용하여 적절한 타입으로 역직렬화됩니다. (선택 사항으로) pk 역직렬화 타입(이 경우 `String`)이 `MultiIndex` 정의에 지정된 경우를 생각하시면 됩니다(아래 #Index 키 역직렬화 참조).
 
-유사하지만 `keys()` 메서드를 사용하여 `token_id` 만 반환하는 또 다른 예:
+유사하지만 `keys()` 메서드를 사용하여 `token_id` 만 반환하는 또 다른 예시입니다:
 
 ```rust
     let pks: Vec<_> = tokens()
