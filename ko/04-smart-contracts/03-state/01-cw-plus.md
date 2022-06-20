@@ -470,7 +470,7 @@ pub fn tokens<'a>() -> IndexedMap<'a, &'a str, TokenInfo, TokenIndexes<'a>> {
 
 `owner` 가 매개변수로 전달된 `String` 값이고 `start_after` 및 `limit` 이 선택적으로 페이지 매김(pagination) 범위를 정의하는 사용 예:
 
-이것은 위의 `Map` 섹션에서 설명한 `prefix()` 를 사용합니다.
+예시는 위의 `Map` 섹션에서 설명한 `prefix()` 를 사용합니다.
 
 ```rust
     let limit = limit.unwrap_or(DEFAULT_LIMIT).min(MAX_LIMIT) as usize;
