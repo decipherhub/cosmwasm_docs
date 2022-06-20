@@ -6,7 +6,7 @@ sidebar_position: '4'
 
 진입점 혹은 *핸들러*는 메세지나 쿼리가 컨트랙트에 의해 처리되는 부분입니다.
 
-앞으로 이야기할 세가지 기능들은 명시적으로 entry point 로 표시되어 있고, 라이브러리에서 번들로 제외됩니다:
+앞으로 이야기할 세 개의 함수들은 명시적으로 entry point 로 표시되어 있고, 라이브러리에서 번들로 제외됩니다:
 
 ```rust
 #[cfg_attr(not(feature = "library"), entry_point)]
