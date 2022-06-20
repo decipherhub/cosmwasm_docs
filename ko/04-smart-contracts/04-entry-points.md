@@ -26,6 +26,6 @@ pub fn instantiate(
 2. `ExecuteMsg` enum 에 정의된 바와 같이, 메세지들은 패턴 매칭 `match` statement 을 사용하여, `execute` 함수에 의해 처리됩니다.
 3. `QueryMsg` enum 에 정의된 바와 같이, 쿼리들은 패턴-매치를 사용하여 `query` 함수에 의해 처리됩니다.
 
-`execute`와 `query` 는 그들이 처리하는 enum 에서 모든 variant 와 완전히 일치해야 하지만 `instantiate` 는 오직 전달된 구조체만 처리하면 됩니다.
+`execute`와 `query` 는 처리하는 enum들이 모든 variant 와 완전히 일치해야 하지만 `instantiate` 는 오직 전달된 구조체만 처리하면 됩니다.
 
 일반적으로, `instantiate` 와 `execute` 는 `Result<Response, ContractError>` 타입을 갖지만, `query` 는 네이티브 코스모스 SDK  `Querier` 로 인해 `StdResult<Binary>`를 갖습니다.
