@@ -22,7 +22,7 @@ sidebar_position: '1'
 
 `Singleton`을 사용할때 가장 크게 바뀐 부분은 더 이상 `Storage`를 내부에 저장하지 않는다는 것입니다. 즉, 객체의 변수를 읽고 및 쓸 필요가 없습니다. 또한 `const fn`을 사용하여 `Item` 을 생성하여 매번 생성해야 하는 함수가 아닌 전역(global) 컴파일 상수로 정의할 수 있어 타이핑을 줄이고 가스비도 절약할 수 있습니다.
 
-사용례:
+사용 예시:
 
 ```rust
 #[derive(Serialize, Deserialize, PartialEq, Debug)]
