@@ -38,7 +38,7 @@ Uint128은 JSON 인코딩/디코딩을 위해 문자열을 사용하는 얇은(t
 
 ## Uint64
 
-Uint64은 JSON 인코딩/디코딩을 위해 문자열을 사용하는 얇은 wrapper 입니다. 그렇기 때문에 u64의 전체 범위는 JSON numbers를 float으로 바꾸는 JavaScript나 jq 같은 클라이언트에서 쓰일 수 있습니다.
+Uint64은 JSON 인코딩/디코딩을 위해 문자열을 사용하는 얇은(thin) wrapper 입니다. 따라서 u64의 전체 범위는 JSON numbers를 float으로 바꾸는 JavaScript나 jq 같은 클라이언트에서 쓰일 수 있습니다.
 
 파일에 포함: `use cosmwasm_std::Uint64;`
 
