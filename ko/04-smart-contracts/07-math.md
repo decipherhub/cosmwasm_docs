@@ -30,7 +30,7 @@ Uint128은 JSON 인코딩/디코딩을 위해 문자열을 사용하는 얇은 w
 
 ### saturating
 
-모든 saturating math 함수로 Unit128 변수와 함께 동작합니다: saturating_add, saturating_sub, saturating_mul, saturating_pow
+모든 saturating math 함수는 Unit128 변수와 함께 동작합니다: saturating_add, saturating_sub, saturating_mul, saturating_pow
 
 ### wrapping
 
