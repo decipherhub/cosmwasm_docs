@@ -4,7 +4,7 @@ sidebar_position: '7'
 
 # Math
 
-cosmwasm 에서 사용하는 math 함수는 표준 rust를 기반으로 하지만 u128, u64 및 소수에 대한 helper 함수가 제공됩니다.
+cosmwasm 에서 사용하는 math 함수는 표준 rust를 기반으로 하지만 u128, u64 및 소수에 대해서는 helper 함수가 제공됩니다.
 
 ## Uint128
 
