@@ -8,9 +8,9 @@ CosmWasm은 스마트 컨트랙트를 위한 멀티 체인 솔루션으로 설�
 
 ## 다른 체인, 같은 컨트랙트 {#different-chain-same-contract}
 
-호스트 애플리케이션에 대한 요구 사항이 거의 없기 때문에, 모든 Cosmos SDK 앱이 `wasm` 모듈을 쉽게 내장할 수 있고, 접근 허가 및 비용을 원하는 대로 바꿀 수 있습니다. 모든 코드는 체인의 세부 사항과 무관하게 설계가 되어 있기에, CosmWasm 컨트랙트를 쓰는 것만으로, Cosmos 생태계의 다른 체인들에서도 실행을 시킬 수 있습니다
+호스트 애플리케이션에 대한 요구 사항이 거의 없기 때문에, 모든 Cosmos SDK 앱이 `wasm` 모듈을 쉽게 내장할 수 있고, 접근 허가 및 비용을 원하는 대로 바꿀 수 있습니다. 모든 코드는 체인의 세부 사항과 무관하게 설계가 되어 있기에, CosmWasm 컨트랙트를 쓰는 것만으로, Cosmos 생태계의 다른 체인들에서도 실행시킬 수 있습니다
 
-[Regen Network](https://regen.network)는 출시에 CosmWasm 지원을 포함하여 계획했습니다. 많은 다른 체인들도 지원을 추가하고 있습니다
+[Regen Network](https://regen.network)는 출시 시점에 CosmWasm 지원을 포함하여 계획했습니다. 많은 다른 체인들도 지원을 추가하고 있습니다
 
 ## 블록체인 간 컨트랙트 {#inter-blockchain-contracts}
 
@@ -26,7 +26,7 @@ CosmWasm의 또 다른 디자인 목표는 프레임워크가 아닌 라이브�
 
 - 여러 언어에 대한 지원을 추가해 컨트랙트를 작성하는 것이 쉬워집니다. 따라서 Rust를 쓰지 않는 사용자를 위해 AssemblyScript나 Go 등의 지원을 추가할 수 있습니다
 
-- 호스트 시스템의 요구를 제한하기 때문에 Cosmos SDK 뿐만 아니라 다른 프레임워크에도 내장시킬 수 있습니다. 코어 런타임 로직인 [`cosmwasm-vm`](https://github.com/CosmWasm/cosmwasm/tree/main/packages/vm)은 Rust로 쓰여졌고, [`wasmvm`](https://github.com/CosmWasm/wasmvm)은 제네릭 Go 바인딩을 제공합니다. Go와 Rust가 블록체인을 작성할 때 가장 인기 많은 두 언어이기 때문에 쉽게 통합할 수 있습니다. 물론, 체인이 [Tendermint](https://tendermint.com)나 [Babble](https://github.com/mosaicnetworks/babble)와 같은 다른 잠재적인 BFT Instant Finality Consensus 알고리즘 위에서 실행되지 않는다면 컨트랙트는 IBC를 통해서 상호작용할 수 없습니다
+- 호스트 시스템의 요구를 제한하기 때문에 Cosmos SDK 뿐만 아니라 다른 프레임워크에도 내장시킬 수 있습니다. 코어 런타임 로직인 [`cosmwasm-vm`](https://github.com/CosmWasm/cosmwasm/tree/main/packages/vm)은 Rust로 쓰여졌고, [`wasmvm`](https://github.com/CosmWasm/wasmvm)은 제네릭 Go 바인딩을 제공합니다. Go와 Rust가 블록체인을 작성할 때 가장 인기 많은 두 언어이기 때문에 쉽게 통합할 수 있습니다. 물론, 체인이 [Tendermint](https://tendermint.com)나 [Babble](https://github.com/mosaicnetworks/babble)와 같은 다른 잠재적인 BFT Instant Finality Consensus 알고리즘 위에서 실행되지 않는다면 컨트랙트가 IBC를 통해서 상호작용할 수는 없습니다
 
 ## 만들어질 플랫폼 {#platform-to-build-on}
 
