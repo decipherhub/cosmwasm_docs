@@ -4,15 +4,15 @@ sidebar_position: '6'
 
 # Events
 
-대부부분의 entry point 함수는 `Result<Response, ContractError>` 타입을 반환합니다.
+대부부분의 진입점(entry point) 함수는 `Result<Response, ContractError>` 타입을 반환합니다.
 
 여기서, `Response` 는 Cosmos SDK의 [Events](https://docs.cosmos.network/v0.42/core/events.html) 에 대한 래퍼(wrapper)입니다.
 
-`Response` 타입은 컨트랙트 entry point (i.e. `instantiate` 혹은 `execute`)의 성공적인 결과로 반환되어야 합니다. 이는 변경 가능으로 선언하고 함수 본문에 추가할 수 있지만 더 일반적인 패턴은 마지막에 구성하고 모든 계산이 성공한 경우 반환하는 것입니다. 다음 예시에서, `Response` 는 <code>Right</code> 또는 success 브랜치를 나타내며 이는  `Result` <br>타입을 반환하는 함수의 일부로 리턴되기 때문에 `Ok` 에 의해 래핑됩니다.
+`Response` 타입은 컨트랙트 진입점(i.e. `instantiate` 혹은 `execute`)의 성공적인 결과로 반환되어야 합니다. 이는 변경 가능으로 선언하고 함수 본문에 추가할 수 있지만 더 일반적인 패턴은 마지막에 구성하고 모든 계산이 성공한 경우 반환하는 것입니다. 다음 예시에서, `Response` 는 <code>Right</code> 또는 success 브랜치를 나타내며 이는  `Result` <br>타입을 반환하는 함수의 일부로 리턴되기 때문에 `Ok` 에 의해 래핑됩니다.
 
 이에 대한 예외는 Cosmos SDK 인터페이스로 인해 `StdResult<Binary>` 를 반환하는 `query` 입니다.
 
-Response의 소스는 [이해하는 데 도움이](https://github.com/CosmWasm/cosmwasm/blob/main/packages/std/src/results/response.rs#L65) 될 수 있습니다.
+Response의 소스는 [더 나은 이해를 위한 도움이](https://github.com/CosmWasm/cosmwasm/blob/main/packages/std/src/results/response.rs#L65) 될 것입니다.
 
 `Response` 의 가장 간단한 사용법은 다음과 같습니다.
 
