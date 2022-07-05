@@ -44,7 +44,7 @@ export function GlobalStyle(): JSX.Element {
 
 #### Login {#login}
 
-밸런스 체커의 첫 view입니다. 로컬 스토리지 burner 지갑, ledger 지갑, Keplr 지갑 등 세가지 로그인 방식을 제공합니다.
+밸런스 체커의 첫 뷰입니다. 로컬 스토리지 burner 지갑, ledger 지갑, Keplr 지갑 등 세가지 로그인 방식을 제공합니다.
 
 #### YourAccount {#youraccount}
 
