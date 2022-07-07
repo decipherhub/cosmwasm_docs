@@ -4,7 +4,7 @@ sidebar_position: '5'
 
 # dApp 개발
 
-앞서 설명한 유틸리티를 사용하기 위해 템플릿에서 밸런스 체커 dApp을 생성하겠습니다.
+앞서 설명한 유틸리티에 대한 예시로 템플릿을 사용해 밸런스 체커 dApp을 만들어 보겠습니다.
 
 ## 템플릿 커스터마이징 {#customize-template}
 
@@ -440,6 +440,6 @@ export const TokenItem = styled.div`
 `;
 ```
 
-## 끝 {#finished}
+## 마무리 {#finished}
 
 이제 네이티브 잔고 및 아무 CW20 컨트랙트의 잔고를 조회할 수 있습니다. 가장 중요한 것은 CosmJS 기반 dApp을 개발하는 방법을 알게 되었다는 점입니다.
