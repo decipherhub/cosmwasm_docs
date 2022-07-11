@@ -34,7 +34,7 @@ pub struct ContractVersion {
     /// contract is the crate name of the implementing contract, eg. `crate:cw20-base`
     /// we will use other prefixes for other languages, and their standard global namespacing
     pub contract: String,
-    /// version is any string that this implementation knows. It may be simple counter "1", "2".
+    /// version은 어떠한 현재 구현을 의미하는 string입니다. "1", "2" 와 같은 간단한 숫자일 수도 있습니다.
     /// or semantic version on release tags "v0.7.0", or some custom feature flag list.
     /// the only code that needs to understand the version parsing is code that knows how to
     /// migrate from the given contract (and is tied to it's implementation somehow)
