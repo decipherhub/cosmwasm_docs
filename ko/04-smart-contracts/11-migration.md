@@ -21,7 +21,7 @@ const CONTRACT_VERSION: &str = env!("CARGO_PKG_VERSION");
 
 #[cfg_attr(not(feature = "library"), entry_point)]
 pub fn instantiate(deps: DepsMut, env: Env, info: MessageInfo, msg: InstantiateMsg) -> Response {
-    // Use CW2 to set the contract version, this is needed for migrations
+    // 마이그레이션 과정에서 필요한 컨트랙트 버전은 CW2 를 사용하여 지정합니다.
     set_contract_version(deps.storage, CONTRACT_NAME, CONTRACT_VERSION)?;
 }
 ```
