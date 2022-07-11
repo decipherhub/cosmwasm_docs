@@ -36,7 +36,7 @@ pub struct ContractVersion {
     pub contract: String,
     /// version은 어떠한 현재 구현을 의미하는 string입니다. "1", "2" 와 같은 간단한 숫자일 수도 있습니다.
     /// 또는 "v0.7.0" 같은 릴리스 태그와 같은 시맨틱 버전이나, 커스텀 feature flag 등일 수도 있습니다.
-    /// the only code that needs to understand the version parsing is code that knows how to
+    /// 버전 파싱 방법이 필요한 코드는 주어진 컨트랙트를 마이그레이션하는 코드입니다. (이는 어떻게든 구현체에 귀속되어있습니다)
     /// migrate from the given contract (and is tied to it's implementation somehow)
     pub version: String,
 }
