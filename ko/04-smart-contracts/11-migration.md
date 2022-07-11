@@ -83,7 +83,7 @@ const CONTRACT_VERSION: &str = env!("CARGO_PKG_VERSION");
 #[entry_point]
 pub fn migrate(deps: DepsMut, _env: Env, msg: MigrateMsg) -> Result<Response, ContractError> {
     let ver = cw2::get_contract_version(deps.storage)?;
-    // ensure we are migrating from an allowed contract
+    // 마이그레이션이 가능한 컨트랙트인지 확인합니다.
     if ver.contract != CONTRACT_NAME {
         return Err(StdError::generic_err("Can only upgrade from same type").into());
     }
