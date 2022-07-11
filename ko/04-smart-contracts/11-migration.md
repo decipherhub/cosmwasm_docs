@@ -87,7 +87,7 @@ pub fn migrate(deps: DepsMut, _env: Env, msg: MigrateMsg) -> Result<Response, Co
     if ver.contract != CONTRACT_NAME {
         return Err(StdError::generic_err("Can only upgrade from same type").into());
     }
-    // note: better to do proper semver compare, but string compare *usually* works
+    // 대게의 경우 string 비교를 사용하지만 semver 비교를 사용하는게 더 나은 방식입니다.
     if ver.version >= CONTRACT_VERSION {
         return Err(StdError::generic_err("Cannot upgrade from a newer version").into());
     }
