@@ -95,7 +95,7 @@ pub fn migrate(deps: DepsMut, _env: Env, msg: MigrateMsg) -> Result<Response, Co
     // 새로운 버전을 설정합니다.
     cw2::set_contract_version(deps.storage, CONTRACT_NAME, CONTRACT_VERSION)?;
 
-    // do any desired state migrations...
+    // 이외에 다른 마이그레이션이 필요한 state가 있다면 진행해줍니다.
 
     Ok(Response::default())
 }
