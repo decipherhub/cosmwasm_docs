@@ -92,7 +92,7 @@ pub fn migrate(deps: DepsMut, _env: Env, msg: MigrateMsg) -> Result<Response, Co
         return Err(StdError::generic_err("Cannot upgrade from a newer version").into());
     }
 
-    // set the new version
+    // 새로운 버전을 설정합니다.
     cw2::set_contract_version(deps.storage, CONTRACT_NAME, CONTRACT_VERSION)?;
 
     // do any desired state migrations...
