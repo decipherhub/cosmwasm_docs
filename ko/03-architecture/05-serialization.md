@@ -21,7 +21,7 @@ Protobuf는 잘 알려져있고 널리 지원되는 바이너리 포맷입니다
 
 ## Cap'n Proto {#capn-proto}
 
-[Cap'n Proto](https://capnproto.org/)는 군더더기 없는 포맷으로 제로 카피 읽기를 지원하고 파싱이 필요 없습니다. 이는 추가적으로 [CosmWasm에서 사용할 수 있도록 제안](https://github.com/CosmWasm/cosmwasm/issues/78)되었습니다. 효율성이나 엄격한 스키마를 원하는 컨트랙트를 위한 포맷이나 내부 데이터 구조(`Params`)을 인코딩하는데 사용될 수 있습니다.
+[Cap'n Proto](https://capnproto.org/)는 군더더기 없는 포맷으로 제로 카피 읽기를 지원하고 파싱이 필요하지 않습니다. 이는 추가적으로 [CosmWasm에서 사용할 수 있도록 제안](https://github.com/CosmWasm/cosmwasm/issues/78)되었습니다. 효율성이나 엄격한 스키마를 원하는 컨트랙트를 위한 포맷이나 내부 데이터 구조(`Params`)을 인코딩하는데 사용될 수 있습니다.
 
 ## 크레딧 {#credits}
 
