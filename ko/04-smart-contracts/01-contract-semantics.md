@@ -12,9 +12,9 @@ sidebar_position: '1'
 
 ### SDK 컨텍스트
 
-CosmWasm을 살펴보기 전에 [Cosmos SDK](https://v1.cosmos.network/sdk) 와 통합하는 블록체인 프레임워크에 의해 실행되는 시맨틱스(문서화가 다소 덜 되어있습니다)를 살펴봐야 합니다. Cosmos SDK는 [Tendermint BFT](https://tendermint.com/core/) Consensus Engine을 기반으로 합니다. 트랜잭션이 CosmWasm에 도착하기 전(그리고 이후) 트랜잭션을 처리하는 방법을 먼저 살펴보겠습니다.
+CosmWasm을 살펴보기 전에 [Cosmos SDK](https://v1.cosmos.network/sdk) 와 통합하는 블록체인 프레임워크에 의해 실행되는 시맨틱스(문서화가 다소 덜 되어있습니다)를 살펴봐야 합니다. Cosmos SDK는 [Tendermint BFT](https://tendermint.com/core/) 합의 엔진을 기반으로 합니다. 트랜잭션이 CosmWasm에 도착하기 전(그리고 이후) 트랜잭션을 처리하는 방법을 먼저 살펴보겠습니다.
 
-먼저, Tendermint 엔진은 다음 블록에 포함될 트랜잭션 목록에 대한 2/3 이상의 합의를 찾습니다. 이것은 *트랜잭션들을 실행하지 않고* 이루어집니다. 최소한의 사전 필터링이 Cosmos SDK 모듈에 의해 이루어지는데, 유효한 형식의 트랜잭션인지, 충분한 가스비가 있는지, 충분한 비용을 지불할 수 있는 주소에 의해 서명이 되었는지 등을 확인합니다. 주의할 것은, 블록에 에러가 있는 트랜잭션들이 많이 포함되어 있을 수 있다는 것입니다.
+먼저, Tendermint 엔진은 다음 블록에 포함될 트랜잭션 목록에 대한 2/3 이상의 합의를 찾습니다. 이는 *트랜잭션들을 실행하지 않고* 이루어집니다. 최소한의 사전 필터링이 Cosmos SDK 모듈에 의해 이루어지는데, 유효한 형식의 트랜잭션인지, 충분한 가스비가 있는지, 충분한 비용을 지불할 수 있는 주소에 의해 서명이 되었는지 등을 확인합니다. 주의할 것은, 블록에 에러가 있는 트랜잭션들이 많이 포함되어 있을 수 있다는 것입니다.
 
 블록이 커밋이 되면(일반적으로 매 5초마다), 트랜잭션들은 실행되기 위해 Cosmos SDK로 순차적으로 들어가게 됩니다. 각 트랜잭션은 이벤트 로그와 함께 결과나 에러를 반환하는데, 다음 블록의 `TxResults` 섹션에 기록이 됩니다. 블록 실행 이후에 `AppHash`(또는 머클 증명 또는 블록체인 상태)가 다음 블록에 포함이 됩니다.
 
@@ -37,7 +37,7 @@ pub fn execute(
 ) -> Result<Response, ContractError> { }
 ```
 
-`DepsMut` 을 사용하면 백킹되는 `Storage` 를 읽고 쓸 수 있을 뿐만 아니라 `Api` 를 사용하여 주소를 검증하고 다른 컨트랙트들 또는 기본 모듈들의 상태를 `Query` 할 수 있습니다. 완료된 뒤에는, `Ok(Response)` 또는 `Err(ContractError)` 를 반환합니다. 다음에 어떤 일이 일어나는지 살펴보겠습니다.
+`DepsMut` 을 사용하면 백킹되는 `Storage` 를 읽고 쓸 수 있을 뿐만 아니라 `Api` 를 사용하여 주소를 검증하고 다른 컨트랙트들 또는 기본 모듈들의 상태를 `Query` 할 수 있습니다. 완료된 뒤에는, `Ok(Response)` 또는 `Err(ContractError)` 를 반환합니다. 그 다음 어떤 일이 일어나는지 살펴보겠습니다.
 
 `Err` 을 반환하면 이 오류가 문자열 표현( `err.to_string()` )으로 변환되고 SDK 모듈에 리턴됩니다. *모든 상태 변경은 되돌려* 지고 `x/wasm` 은 이 오류 메시지를 반환합니다. 이 오류 메시지는 *일반적으로* (아래 하위 메시지 예외 참조) 트랜잭션을 중단하고 동일한 오류 메시지를 외부 호출자에게 리턴합니다.
 
@@ -79,7 +79,7 @@ Cosmos SDK에서 트랜잭션은 옵셔널한 데이터 "결과"와 함께 사�
 
 ### 메시지 발송(Dispatching Messages)
 
-이제 `messages` 필드로 이동해 보겠습니다. cw20 컨트랙트 전송 시 잔액을 조정하는 것과 같이 일부 컨트랙트는 해당 컨트랙트 자체만 봐도 괜찮습니다. 그러나 많은 사람들이 토큰(네이티브 또는 cw20)을 이동하거나 더 복잡한 작업을 위해 다른 컨트랙트를 호출하기를 원합니다. 이것은 메시지가 들어오는 곳입니다. 우리는 [`CosmosMsg` 를 반환합니다. 이것은 컨트랙트가 만들 수 있는 모든 외부 호출을 직렬화할 수 있는 표현](https://github.com/CosmWasm/cosmwasm/blob/v0.14.0-beta4/packages/std/src/results/cosmos_msg.rs#L18-L40) 입니다. 이것은 다음과 같이 보입니다( `stargate` 기능 플래그가 활성화된 경우라면).
+이제 `messages` 필드로 이동해 보겠습니다. cw20 컨트랙트 전송 시 잔액을 조정하는 것과 같이 일부 컨트랙트는 해당 컨트랙트 자체만으로 해결할 수 있습니다. 그러나 많은 사람들이 토큰(네이티브 또는 cw20)을 이동하거나 더 복잡한 작업을 위해 다른 컨트랙트를 호출하기를 원합니다. 이는 메시지가 들어오는 부분입니다. 우리는 [`CosmosMsg` 를 반환합니다. 이것은 컨트랙트가 만들 수 있는 모든 외부 호출을 직렬화할 수 있는 표현](https://github.com/CosmWasm/cosmwasm/blob/v0.14.0-beta4/packages/std/src/results/cosmos_msg.rs#L18-L40) 입니다. 이것은 다음과 같이 보입니다( `stargate` 기능 플래그가 활성화된 경우라면).
 
 ```rust
 pub enum CosmosMsg<T = Empty>
@@ -203,6 +203,6 @@ pub enum QueryRequest<C: CustomQuery> {
 }
 ```
 
-이것은 유연하며 언어 간 표현에 필요한 인코딩이지만, bank 잔고를 찾고 싶을 때 생성하고 사용하기에는 다소 무리가 있습니다. 이를 해결하기 위해, 종종 <code>Querier</code> 를 래핑하는 <a><code data-md-type="codespan">QuerierWrapper</code></a>를 사용하며, 후드(hood) 하에서 `QueryRequest`와 `Querier.raw_query`를 사용하는 편리한 메소드들도 많이 제공합니다.
+이것은 유연하며 언어 간 표현에 필요한 인코딩이지만, bank 잔고를 찾고 싶을 때 생성하고 사용하기에는 다소 무리가 있습니다. 이를 해결하기 위해, 종종 <code>Querier</code> 를 래핑하는 <a><code>QuerierWrapper</code></a>를 사용하며, 후드(hood) 하에서 `QueryRequest`와 `Querier.raw_query`를 사용하는 편리한 메소드들도 많이 제공합니다.
 
-[저희 문서에서 `Querier` 디자인에](https://docs.cosmwasm.com/docs/1.0/architecture/query) 대한 자세한 설명을 읽을 수 있습니다.
+저희 문서에서 [`Querier` 디자인](https://docs.cosmwasm.com/docs/1.0/architecture/query)에 대한 자세한 설명을 읽을 수 있습니다.
