@@ -12,7 +12,7 @@ sidebar_position: '6'
 
 이에 대한 예외는 Cosmos SDK 인터페이스로 인해 `StdResult<Binary>` 를 반환하는 `query` 입니다.
 
-Response의 소스는 [더 나은 이해를 위한 도움이](https://github.com/CosmWasm/cosmwasm/blob/main/packages/std/src/results/response.rs#L65) 될 것입니다.
+Response의 소스는 [더 나은 이해를 위한 도움](https://github.com/CosmWasm/cosmwasm/blob/main/packages/std/src/results/response.rs#L65)이 될 것입니다.
 
 `Response` 의 가장 간단한 사용법은 다음과 같습니다.
 
