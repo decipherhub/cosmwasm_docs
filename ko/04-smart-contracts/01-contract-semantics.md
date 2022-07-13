@@ -205,4 +205,4 @@ pub enum QueryRequest<C: CustomQuery> {
 
 이것은 유연하며 언어 간 표현에 필요한 인코딩이지만, bank 잔고를 찾고 싶을 때 생성하고 사용하기에는 다소 무리가 있습니다. 이를 해결하기 위해, 종종 <code>Querier</code> 를 래핑하는 <a><code>QuerierWrapper</code></a>를 사용하며, 후드(hood) 하에서 `QueryRequest`와 `Querier.raw_query`를 사용하는 편리한 메소드들도 많이 제공합니다.
 
-[저희 문서에서 `Querier` 디자인에](https://docs.cosmwasm.com/docs/1.0/architecture/query) 대한 자세한 설명을 읽을 수 있습니다.
+저희 문서에서 [`Querier` 디자인](https://docs.cosmwasm.com/docs/1.0/architecture/query)에 대한 자세한 설명을 읽을 수 있습니다.
