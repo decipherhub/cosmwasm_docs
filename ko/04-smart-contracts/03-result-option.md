@@ -44,7 +44,7 @@ result 타입은 개념적으로 다른 함수형 언어에서의 `Either` 와 �
 execute_transfer(deps, env, info, recipient, amount)
 ```
 
-매치 브랜치가  entry point 와 동일하게 입력된 함수를 호출할 것으로 예상할 수 있습니다. 그리고 [이를 확인해 보세요.](https://github.com/CosmWasm/cw-plus/blob/main/contracts/cw20-base/src/contract.rs#L173).
+매치 브랜치가  entry point 와 동일하게 입력된 함수를 호출할 것으로 예상할 수 있습니다. [이를 확인해 보세요.](https://github.com/CosmWasm/cw-plus/blob/main/contracts/cw20-base/src/contract.rs#L173).
 
 ```rust
 pub fn execute_transfer(
