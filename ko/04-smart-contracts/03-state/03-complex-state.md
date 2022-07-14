@@ -4,7 +4,7 @@ sidebar_position: '3'
 
 # 복잡한 상태와 맵핑(Complex State and Maps)
 
-물론 대부분의 중요하지 않은 예의 경우, 추가 데이터를 저장해야할 수 있습니다. 더 큰 JSON 데이터 구조를 직렬화하고 키-값 조회를 사용하여 이 데이터에 액세스할 수 있습니다.
+물론 대부분의 사소하지 않은 예시에서, 추가적인 데이터를 저장해야할 필요가 있을 것입니다. 더 큰 JSON 데이터 구조를 직렬화하고 키-값 조회를 사용하여 이 데이터에 액세스할 수 있습니다.
 
 CW20에서 CW20 잔액에 대한 주소 맵핑은 다음과 같은 맵을 통해 이루어집니다.
 
@@ -14,7 +14,7 @@ pub const BALANCES: Map<&Addr, Uint128> = Map::new("balance");
 
 이에 대한 코드는 [여기](https://github.com/CosmWasm/cw-plus/blob/main/contracts/cw20-base/src/state.rs#L35) 에서 찾을 수 있습니다.
 
-<a>여기</a> 에서 <code>contract.rs</code> 와 상호 작용하는 방법을 볼 수 있습니다. 관련 스니펫은 다음과 같습니다.
+[여기](https://github.com/CosmWasm/cw-plus/blob/main/contracts/cw20-base/src/contract.rs#L303) 에서 `contract.rs` 와 상호 작용하는 방법을 볼 수 있습니다. 관련 스니펫은 다음과 같습니다.
 
 ```rust
 let rcpt_addr = deps.api.addr_validate( & recipient) ?;
