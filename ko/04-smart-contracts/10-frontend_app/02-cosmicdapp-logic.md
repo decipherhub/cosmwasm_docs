@@ -58,15 +58,15 @@ config 파일을 정의할 때 도움이 되는 `CoinMap`에 대한 정의를 �
 
 ## Service {#service}
 
-Service 리소스는 [React](https://reactjs.org/) context provider, 몇가지 유틸리티 함수, `[ProtectedSwitch](#protectedswitch)` React component를 제공합니다.
+Service 리소스는 [React](https://reactjs.org/) context 프로바이더, 몇가지 유틸리티 함수, `[ProtectedSwitch](#protectedswitch)` React 컴포넌트를 제공합니다.
 
 ### Sdk provider {#sdk-provider}
 
-`useSdk` hook으로 Sdk provider와 상호작용할 수 있습니다. `SigningCosmWasmClient`에 접근해서 체인에 쿼리를 보낼 수 있습니다.
+`useSdk` hook으로 Sdk 프로바이더와 상호작용할 수 있습니다. `SigningCosmWasmClient`에 접근해서 체인에 쿼리를 보낼 수 있습니다.
 
 ### Account provider {#account-provider}
 
-`useAccount` hook은 Account provider의 상태를 가지고 있어 사용자의 주소나 잔고를 얻는데 유용합니다.
+`useAccount` hook은 Account 프로바이더의 상태를 가지고 있어 사용자의 주소나 잔고를 얻는데 유용합니다.
 
 ### ErrorProvider {#errorprovider}
 
@@ -78,4 +78,4 @@ Service 리소스는 [React](https://reactjs.org/) context provider, 몇가지 �
 
 ### ProtectedSwitch {#protectedswitch}
 
-`react-router-dom` `Switch`를 감싸고 있는 Component입니다. 사용자가 로그인 과정을 끝냈을 때 해당 route 이동을 허용합니다.
+`react-router-dom` `Switch`를 감싸고 있는 컴포넌트입니다. 사용자가 로그인 과정을 끝냈을 때 해당 route 이동을 허용합니다.
