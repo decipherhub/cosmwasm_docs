@@ -10,7 +10,7 @@ sidebar_position: '4'
 
 이 방법을 이용하면, 지역 `logic`과 `design` 패키지 의존성을 사용하는 또 다른 lena 패키지를 `packages/` 디렉토리에 설치하게 됩니다.
 
-그렇게 하기 위해서는 `_template` 디렉토리를 `packages/`에 복사하고 이름을 `balance-checker`로 바꾸기만 하면 됩니다.
+이를 위해 `_template` 디렉토리를 `packages/`에 복사하고 이름을 `balance-checker`로 바꾸기만 하면 됩니다.
 
 ```shell
 git clone https://github.com/CosmWasm/dApps.git
