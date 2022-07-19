@@ -2,6 +2,9 @@
 id: intro
 slug: /
 sidebar_position: '1'
+description: >-
+  이 문서는 서울대학교 블록체인 학회 디사이퍼(Decipher) Comswasm 문서 한글화 팀에서 Cosmwasm 공식 문서의
+  2022.05.24일자 내용을 기반으로 번역한 문서입니다.
 ---
 
 # 소개
