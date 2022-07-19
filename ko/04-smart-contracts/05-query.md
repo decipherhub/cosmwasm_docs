@@ -18,7 +18,7 @@ sidebar_position: '5'
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum QueryMsg {
-  // ResolveAddress returns the current address that the name resolves to
+  // ResolveAddress 는 name 이 resolve 된 현재 주소를 반환합니다
   ResolveRecord { name: String },
   Config {},
 }
