@@ -2,12 +2,13 @@
 id: intro
 slug: /
 sidebar_position: '1'
-description: >-
-  이 문서는 서울대학교 블록체인 학회 디사이퍼(Decipher) Comswasm 문서 한글화 팀에서 Cosmwasm 공식 문서의
-  2022.05.24일자 내용을 기반으로 번역한 문서입니다.
 ---
 
 # 소개
+
+_이 문서는 서울대학교 블록체인 학회 디사이퍼(Decipher) Comswasm 문서 한글화 팀에서_ [_Cosmwasm 공식 문서_](https://docs.cosmwasm.com/docs/1.0/)_의 2022.05.24일자 내용을 기반으로 번역한 문서입니다. 문서의 내용 중 일부가 Outdated 되거나 현재 시점의 원본 문서에서 누락된 내용이 있을 수 있습니다._
+
+## 들어가 <a href="#how-to-use-cosmwasm" id="how-to-use-cosmwasm"></a>
 
 CosmWasm은 코스모스 생태계를 위해 구축된 새로운 스마트 컨트랙트 플랫폼입니다. 아직 들어보지 못했다면 [이 소개를 확인하세요](https://blog.cosmos.network/announcing-the-launch-of-cosmwasm-cc426ab88e12). 이 문서의 목적은 CosmWasm을 사용해 보거나 제품에 사용하려는 개발자를 위해 상세한 정보를 제공하는 것입니다. 특히 Cosmos SDK 경험이 있는 Go 개발자와 블록체인 플랫폼을 찾고 있는 Rust 개발자를 대상으로 합니다.
 
