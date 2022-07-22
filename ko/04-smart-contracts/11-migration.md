@@ -6,7 +6,7 @@ sidebar_position: '11'
 
 마이그레이션을 통해 스마트 컨트랙트의 코드를 대체하거나 '업그레이드' 할 수 있습니다.
 
-CosmWasm을 사용하면 컨트랙트 마이그레이션이 매우 편리합니다. 컨트랙트를 인스턴스화 할 때 선택할 수 있는 admin 필드가 있습니다. 만약 admin이 빈칸으로 설정된다면, 해당 컨트랙트는 수정이 불가합니다. 반대로 admin이 채워진다면 (external account 또는 거버넌스 컨트랙트), 해당 account에서 마이그레이션을 시도할 수 있습니다. 또한 admin은 다른 account로 admin을 변경하거나, 특정 기간이 지난 후 컨트랙트가 수정불가능하게 만들 수도 있습니다. 하지만, 컨트랙트 A에서 컨트랙트 B로 마이그레이션 하기 위해서, 컨트랙트 B에서는 기존에 스테이트가 어떻게 인코딩 되어있는지 알아야 합니다.
+CosmWasm을 사용하면 컨트랙트 마이그레이션이 매우 편리합니다. 컨트랙트를 인스턴스화 할 때 선택할 수 있는 admin 필드가 있습니다. 만약 admin이 빈칸으로 설정된다면, 해당 컨트랙트는 수정이 불가합니다. 반대로 admin이 채워진다면 (external account 또는 거버넌스 컨트랙트), 해당 account에서 마이그레이션을 시도할 수 있습니다. 또한 admin은 다른 account로 admin을 변경하거나, 특정 기간이 지난 후 컨트랙트가 수정불가능하게 만들 수도 있습니다. 하지만, 컨트랙트 A에서 컨트랙트 B로 마이그레이션 하기 위해서, 컨트랙트 B에서는 기존에 State가 어떻게 인코딩 되어있는지 알아야 합니다.
 
 CW2 규격을 통해 이를 쉽게 풀어낼 수 있습니다. CW2는 모든 컨트랙트의 인스턴스화 시점에 단 하나의 특별한 `Singleton` 이 디스크에 저장될 수 있게 합니다. 마이그레이션 함수가 불러질 때, 새로운 컨트랙트는 마이그레이션을 하려고 하는 기존 컨트랙트의 데이터를 읽고 마이그레이션의 대상이 맞는지 확인할 수 있습니다. 또한 여러 마이그레이션 경로를 지원할 때 추가적인 버전 정보를 포함합니다.
 
@@ -31,8 +31,8 @@ pub fn instantiate(deps: DepsMut, env: Env, info: MessageInfo, msg: InstantiateM
 ```rust
 #[derive(Serialize, Deserialize, Clone, PartialEq, JsonSchema, Debug)]
 pub struct ContractVersion {
-    /// contract is the crate name of the implementing contract, eg. `crate:cw20-base`
-    /// we will use other prefixes for other languages, and their standard global namespacing
+    /// contract는 구현하려는 컨트랙트의 crate name 입니다. 예: `crate:cw20-base`
+    /// 각 언어마다 다른 접두사와 범용 네임스페이스를 사용합니다.
     pub contract: String,
     /// version은 어떠한 현재 구현을 의미하는 string입니다. "1", "2" 와 같은 간단한 숫자일 수도 있습니다.
     /// 또는 "v0.7.0" 같은 릴리스 태그와 같은 시맨틱 버전이나, 커스텀 feature flag 등일 수도 있습니다.
@@ -63,7 +63,7 @@ const CONTRACT_VERSION: &str = env!("CARGO_PKG_VERSION");
 
 #[entry_point]
 pub fn migrate(deps: DepsMut, _env: Env, msg: MigrateMsg) -> Result<Response, ContractError> {
-    // No state migrations performed, just returned a Response
+    // 어떠한 state 마이그레이션도 일어나지 않고, Response만을 리턴합니다.
     Ok(Response::default())
 }
 ```
@@ -94,7 +94,7 @@ pub fn migrate(deps: DepsMut, _env: Env, msg: MigrateMsg) -> Result<Response, Co
     // 새로운 버전을 설정합니다.
     cw2::set_contract_version(deps.storage, CONTRACT_NAME, CONTRACT_VERSION)?;
 
-    // 이외에 다른 마이그레이션이 필요한 state가 있다면 진행해줍니다.
+    // 이외에 마이그레이션이 필요한 state가 있다면 진행해줍니다.
 
     Ok(Response::default())
 }
@@ -119,8 +119,8 @@ pub fn migrate(deps: DepsMut, _env: Env, msg: MigrateMsg) -> Result<Response, Co
     if storage_version < version {
         set_contract_version(deps.storage, CONTRACT_NAME, CONTRACT_VERSION)?;
 
-        // If state structure changed in any contract version in the way migration is needed, it
-        // should occur here
+        // 만약 특정 버전의 컨트랙트에서 마이그레이션이 필요한 방식으로 state 구조가 바뀐다면,
+        // 그 작업은 이 위치에서 진행되어야 합니다.
     }
     Ok(Response::default())
 }
@@ -178,7 +178,7 @@ pub fn migrate(deps: DepsMut, _env: Env, msg: MigrateMsg) -> Result<Response, Ha
 ```rust
 #[entry_point]
 pub fn migrate(deps: DepsMut, env: Env, msg: MigrateMsg) -> StdResult<Response> {
-    // delete all state
+    // 모든 state를 삭제합니다.
     let keys: Vec<_> = deps
         .storage
         .range(None, None, Order::Ascending)
@@ -189,7 +189,7 @@ pub fn migrate(deps: DepsMut, env: Env, msg: MigrateMsg) -> StdResult<Response> 
         deps.storage.remove(&k);
     }
 
-    // get balance and send all to recipient
+    // balance를 확인하고 전량을 recipient에게 전송합니다.
     let balance = deps.querier.query_all_balances(env.contract.address)?;
     let send = BankMsg::Send {
         to_address: msg.payout.clone(),
@@ -215,9 +215,9 @@ pub fn migrate(deps: DepsMut, env: Env, msg: MigrateMsg) -> StdResult<Response> 
 
 ### Terra
 
-Terra(Classic) 는 마이그레이션을 처리하는데에 몇가지 차이점이 있습니다. 먼저, 컨트랙트의 instantiation 당시에 migratable로 지정된 컨트랙트만 마이그레이션을 진행할 수 있습니다. 이러한 컨트랙트는 일반적인 마이그레이션 절차와 유사하게 migratability 를 가진 admin이 필요합니다. 이때 Terra에서의 마이그레이션은 기존 컨트랙트와 'compatible'(이는 CW2에 명시되어 있습니다. [Source](https://github.com/terra-money/terrain#migrating-cosmwasm-contracts-on-terra).) 한 다른 코드의 code id로 대체합니다.
+Terra(Classic) 는 마이그레이션을 처리하는데에 몇가지 차이점이 있습니다. 먼저, 컨트랙트의 instantiation 당시에 migratable로 지정된 컨트랙트만 마이그레이션을 진행할 수 있습니다. 이러한 컨트랙트는 일반적인 마이그레이션 절차와 유사하게 migratability 를 가진 admin이 필요합니다. 이때 Terra에서의 마이그레이션은 기존 컨트랙트와 'compatible'(이는 CW2에 명시되어 있습니다. [Terra Docs](https://github.com/terra-money/terrain#migrating-cosmwasm-contracts-on-terra).) 한 다른 코드의 code id로 대체합니다.
 
-> 참고: Terra에서는 체인 간에 code_id를 마이그레이션할 수도 있습니다(예: COL4-&gt;5). 이 작업은 원자적이며 단 한 번만 수행할 수 있습니다. 이러한 이유는 코드를 새 체인으로 마이그레이션하고 이전 code ID를 유지하기 위함입니다. 이 고 ㅏ정은 기존 code ID에 의존하는 새 네트워크에서 다른 컨트랙트의 downstream breakage를 방지하는 데 도움이 됩니다. 체인 간 마이그레이션을 위한 커맨드 예:
+> 참고: Terra에서는 체인 간에 code_id를 마이그레이션할 수도 있습니다(예: COL4-&gt;5). 이 작업은 원자적이며 단 한 번만 수행할 수 있습니다. 이러한 이유는 코드를 새 체인으로 마이그레이션하고 이전 code ID를 유지하기 위함입니다. 이 과정은 기존 code ID에 의존하는 새 네트워크에서 다른 컨트랙트의 downstream breakage를 방지하는 데 도움이 됩니다. 체인 간 마이그레이션을 위한 커맨드 예:
 >
 > ```rust
 > terrad tx wasm store ./{code.wasm} --from {keyname} \
