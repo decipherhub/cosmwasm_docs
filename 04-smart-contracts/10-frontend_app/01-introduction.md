@@ -8,23 +8,23 @@ sidebar_position: '1'
 
 ## 뷰 <a href="#views" id="views"></a>
 
-다음과 같습니다.
+다음과 같은 화면으로 구성됩니다.
 
 ### 로그인 <a href="#login" id="login"></a>
 
-![image](../../ko/04-smart-contracts/10-frontend\_app/assets/frontend-dapp/login.png)
+<img src="../../.gitbook/assets/image (2).png" alt="" data-size="original">
 
 ### 네이티브 잔고 <a href="#native-balance" id="native-balance"></a>
 
-![image](../../ko/04-smart-contracts/10-frontend\_app/assets/frontend-dapp/balance-native.png)
+![](<../../.gitbook/assets/image (3).png>)
 
 ### CW20 잔고 <a href="#balance-of-a-cw20-contract" id="balance-of-a-cw20-contract"></a>
 
-![image](../../ko/04-smart-contracts/10-frontend\_app/assets/frontend-dapp/balance-cw20.png)
+![](../../.gitbook/assets/image.png)
 
 ### 컨트랙트가 없는 경우의 에러 <a href="#error-for-address-with-no-contract" id="error-for-address-with-no-contract"></a>
 
-![image](../../ko/04-smart-contracts/10-frontend\_app/assets/frontend-dapp/balance-error.png)
+![](<../../.gitbook/assets/image (4).png>)
 
 ## 환경 설정 <a href="#setup-environment" id="setup-environment"></a>
 
