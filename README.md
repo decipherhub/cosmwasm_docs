@@ -16,7 +16,7 @@ CosmWasm은 코스모스 생태계를 위해 구축된 새로운 스마트 컨�
 
 CosmWasm은 Cosmos SDK에 플러그인할 수 있는 모듈로 작성되었습니다. 따라서 Cosmos SDK를 사용하여 블록체인을 구축하고 있는 사람은 누구나 기존 로직을 조정하지 않고도 쉽고 빠르게 CosmWasm 스마트 컨트랙트 기능을 체인에 추가할 수 있습니다. 우리는 또한 `wasmd` 라고 하는 `gaiad` 바이너리에 합쳐진 CosmWasm의 샘플 바이너리를 제공하므로 Cosmos Hub와 동일한 보안 모델과 문서화되고 테스트된 도구를 사용하여 새로운 스마트 컨트랙트 지원이 가능한 블록체인을 즉시 시작할 수 있습니다.
 
-컨트랙트를 호스팅하고 앱에서 사용하려면 실행 중인 블록체인이 필요합니다. 테스트넷에 [연결](02-getting-started/03-setting-env.md#setting-up-environment) 하거나 [로컬 "dev net"을 설정하는](02-getting-started/03-setting-env.md#run-local-node-optional) 방법은 이후 섹션에서 설명합니다. 그리고 쉽게 데모를 실행하고 다른 사람들과 컨트랙트 공유하기 위해 모든 개발자가 간단히 컨트랙트를 업로드할 수 있는 호스팅 테스트넷을 곧 출시할 계획입니다.
+컨트랙트를 호스팅하고 앱에서 사용하려면 실행 중인 블록체인이 필요합니다. 테스트넷에 [연결](02-getting-started/03-setting-env.md) 하거나 [로컬 "dev net"을 설정하는](02-getting-started/03-setting-env.md) 방법은 이후 섹션에서 설명합니다. 그리고 쉽게 데모를 실행하고 다른 사람들과 컨트랙트 공유하기 위해 모든 개발자가 간단히 컨트랙트를 업로드할 수 있는 호스팅 테스트넷을 곧 출시할 계획입니다.
 
 ## 섹션 <a href="#sections" id="sections"></a>
 
